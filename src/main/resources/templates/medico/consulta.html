@@ -52,8 +52,7 @@
                 <td><a class="btn btn-info btn-sm" th:href="@{/consulta/{id}(id=${m.id})}">Detalhes</a></td>
             </tr>
         </table>
-        <span class="badge text-bg-success">Total R$: <span th:text="${medico.valorTotal()}"></span> </span>
-
+        <span class="badge text-bg-success">Total R$: <span th:text="${#numbers.formatDecimal(medico.valorTotal(),1, 2, 'COMMA')}"></span> </span>
     </div>
 </div>
 </body>

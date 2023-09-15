@@ -28,4 +28,11 @@ public class ConsultaRepository {
         return query.getFirstResult();
     }
 
+    public double vTotal(){
+        Query query = em.createQuery("select sum(valor) from Consulta ");
+        List total;
+        total = query.getResultList();
+        return (Double) total.get(0);
+    }
+
 }
