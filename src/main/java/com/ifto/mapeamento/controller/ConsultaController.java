@@ -7,10 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -34,5 +31,10 @@ public class ConsultaController {
     public ModelAndView listarConsulta(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("consulta", repository.consulta(id));
         return new ModelAndView("consulta/detalhe", model);
+    }
+
+    @PostMapping("/save")
+    public ModelAndView saveProduto(Consulta consulta){
+        return new ModelAndView("redirect:/produto/list");
     }
 }
