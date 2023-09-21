@@ -30,20 +30,20 @@
 <main class="container">
     <br><br>
     <div class="container">
-        <h1>Cadastro de Médico</h1>
+        <h1>Cadastro de Consultas</h1>
         <hr>
-        <form th:action="@{${medico.id == null} ? '/medico/save' : '/medico/update'}" th:object="${medico}" method="post">
+        <form th:action="@{${consulta.id == null} ? '/consulta/save' : '/consulta/update'}" th:object="${consulta}" method="post">
             <input type="hidden" th:field="*{id}">
             <div class="col-12">
-                <input class="form-control" type="text" th:field="*{nome}"  placeholder="Nome">
+                <input class="form-control" type="text" th:field="*{valor}"  placeholder="Valor">
             </div>
             <br>
             <div class="col-12">
-                <input class="form-control" type="text" th:field="*{crm}"  placeholder="CRM">
+                <input class="form-control" type="text" th:field="*{observacao}"  placeholder="Observacao">
             </div>
             <br>
             <div class="col-12">
-                <input class="form-control" type="text" th:field="*{telefone}"  placeholder="Telefone">
+                <input class="form-control" type="text" th:field="*{data}"  placeholder="data">
             </div>
             <br>
             <input class="btn btn-success btn-sm" type="submit" value="Enviar">
