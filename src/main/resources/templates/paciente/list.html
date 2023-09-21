@@ -41,6 +41,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Telefone</th>
+                <th>CPF</th>
                 <th>Consultas</th>
                 <th>Editar</th>
                 <th>Excluir</th>
@@ -50,6 +51,7 @@
                 <td th:text="${p.id}"></td>
                 <td th:text="${p.nome}"></td>
                 <td th:text="${p.telefone}"></td>
+                <td th:text="${p.cpf}"></td>
                 <td> <a class="btn btn-info btn-sm" th:href="@{/paciente/{id}(id=${p.id})}">Ver consultas</a></td>
                 <td> <a class="btn btn-warning btn-sm" th:href="@{/paciente/editPaciente/{id}(id=${p.id})}">Editar</a></td>
                 <td> <a class="btn btn-danger btn-sm" onclick="return window.confirm('Tem certeza que deseja excluir este Produto?')" th:href="@{/paciente/removePaciente/{id}(id=${p.id})}">Excluir</a> </td>

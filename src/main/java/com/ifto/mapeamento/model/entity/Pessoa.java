@@ -11,7 +11,7 @@ public class Pessoa {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Long id;
-    private String nome, telefone;
+    private String nome, telefone, cpf;
 
     public Long getId() {
         return id;
@@ -35,5 +35,13 @@ public class Pessoa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }
