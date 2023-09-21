@@ -35,6 +35,7 @@
     <br><br>
     <div class="container">
         <h1>Lista de Médicos</h1>
+        <a class="btn btn-warning btn-sm " href="/medico/form">Novo Médico</a>
         <hr>
         <table class="table table-sm table-striped " border="1">
             <thead class="table-dark">
@@ -43,13 +44,17 @@
                 <th>Nome</th>
                 <th>CRM</th>
                 <th>Consultas</th>
+                <th>Editar</th>
+                <th>Excluir</th>
             </tr>
             </thead>
             <tr th:each="m : ${medico}">
                 <td th:text="${m.id}"></td>
                 <td th:text="${m.nome}"></td>
                 <td th:text="${m.crm}"></td>
-                <td> <a class="btn btn-warning btn-sm" th:href="@{/medico/{id}(id=${m.id})}">Consultas</a></td>
+                <td> <a class="btn btn-info btn-sm" th:href="@{/medico/{id}(id=${m.id})}">Ver consultas</a></td>
+                <td> <a class="btn btn-warning btn-sm" th:href="@{/medico/editMedico/{id}(id=${m.id})}">Editar</a></td>
+                <td> <a class="btn btn-danger btn-sm" onclick="return window.confirm('Tem certeza que deseja excluir este Produto?')" th:href="@{/medico/removeMedico/{id}(id=${m.id})}">Excluir</a> </td>
             </tr>
         </table>
     </div>

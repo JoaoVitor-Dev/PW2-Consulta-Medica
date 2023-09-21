@@ -39,7 +39,7 @@ public class MedicoController {
     }
 
     @PostMapping("/save")
-    public ModelAndView salvarPaciente(Medico medico){
+    public ModelAndView salvarMedico(Medico medico){
         repository.save(medico);
         return new ModelAndView("redirect:/medico/list");
     }
@@ -51,8 +51,14 @@ public class MedicoController {
     }
 
     @GetMapping("/editMedico/{id}")
-    public ModelAndView editPaciente(@PathVariable("id") Long id, ModelMap model) {
+    public ModelAndView editMedico(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("medico", repository.medico(id));
         return new ModelAndView("/medico/form", model);
+    }
+
+    @PostMapping("/update")
+    public ModelAndView updateMedico(Medico medico) {
+        repository.update(medico);
+        return new ModelAndView("redirect:/medico/list");
     }
 }
