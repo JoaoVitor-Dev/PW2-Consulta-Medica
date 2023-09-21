@@ -41,6 +41,7 @@
     <br><br>
     <div class="container ">
         <h1>Lista de Consultas</h1>
+        <a class="btn btn-warning btn-sm " href="/consulta/form">Novo Consulta</a>
         <hr>
         <table class="table table-sm table-striped " border="1">
             <thead class="table-dark">
@@ -60,7 +61,8 @@
                 <td><a class="btn btn-info btn-sm" th:href="@{/consulta/{id}(id=${c.id})}">Detalhes</a></td>
             </tr>
         </table>
-        <span class="badge text-bg-success">Total R$: <span th:text="${#numbers.formatDecimal(vTotal,1, 2, 'COMMA')}"></span> </span>
+        <!--  <span class="badge text-bg-success">Total R$: <span th:text="${#numbers.formatDecimal(vTotal,1, 2, 'COMMA')}"></span> </span>-->
+
     </div>
 </div>
 

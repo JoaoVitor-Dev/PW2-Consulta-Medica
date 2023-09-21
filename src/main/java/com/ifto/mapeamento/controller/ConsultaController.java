@@ -24,7 +24,7 @@ public class ConsultaController {
     @GetMapping("/list")
     public ModelAndView listarConsultas(ModelMap model) {
         model.addAttribute("consulta", repository.consultas());
-        model.addAttribute("vTotal", repository.vTotal());
+        //model.addAttribute("vTotal", repository.vTotal());
         return new ModelAndView("consulta/list", model);
     }
 
@@ -32,7 +32,6 @@ public class ConsultaController {
     public String form(Consulta consulta){
         return "/consulta/form";
     }
-
 
     @GetMapping("/{id}")
     public ModelAndView listarConsulta(@PathVariable("id") Long id, ModelMap model) {
