@@ -24,7 +24,7 @@ public class ConsultaController {
     @GetMapping("/list")
     public ModelAndView listarConsultas(ModelMap model) {
         model.addAttribute("consulta", repository.consultas());
-        //model.addAttribute("vTotal", repository.vTotal());
+        model.addAttribute("vTotal", repository.vTotal());
         return new ModelAndView("consulta/list", model);
     }
 
