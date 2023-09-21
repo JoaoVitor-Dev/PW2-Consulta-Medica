@@ -31,8 +31,8 @@ public class MedicoRepository {
         em.remove(v);
     }
 
-    public void update(Medico veiculo){
-        em.merge(veiculo);
+    public void update(Medico medico){
+        em.merge(medico);
     }
 
 }

@@ -35,4 +35,19 @@ public class ConsultaRepository {
         return (Double) total.get(0);
     }
 
+
+    public void save(Consulta consulta){
+        em.persist(consulta);
+    }
+
+    public void remove(Long id){
+        Consulta c = em.find(Consulta.class, id);
+        em.remove(c);
+    }
+
+    public void update(Consulta consulta){
+        em.merge(consulta);
+    }
+
+
 }
