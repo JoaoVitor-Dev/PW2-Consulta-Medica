@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.management.Attribute;
 
 @Transactional
 @Controller
@@ -43,7 +46,15 @@ public class PacienteController {
     }
 
     @GetMapping("/removePaciente/{id}")
-    public ModelAndView remove(@PathVariable("id") Long id){
+    public ModelAndView remove(@PathVariable("id") Long id, RedirectAttributes attributes){
+
+        /*
+        if(!repository.paciente(id).getConsultas().isEmpty()){
+            attributes.addAttribute("erro", "Não é permitido excluir pacientes com consultas!");
+        }
+
+         */
+
         repository.remove(id);
         return new ModelAndView("redirect:/paciente/list");
     }
