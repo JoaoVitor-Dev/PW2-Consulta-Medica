@@ -1,56 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-</head>
+<html th:replace="~{fragments/layout :: layout(~{::head},~{::main})}">
+<head th:replace="~{fragments/head :: head(~{})}"></head>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary" data-bs-theme="dark">
-    <div class="container">
-        <a class="navbar-brand" href="/">App de Consulta Médica</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link"  href="/consulta/list">Consultas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"  href="/paciente/list">Pacientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/medico/list">Médicos</a>
-                </li>
-            </ul>
+<main>
+    <main class="container">
+        <br><br>
+        <div class="container">
+            <h1>Cadastro de Consultas</h1>
+            <hr>
+            <form th:action="@{${consulta.id == null} ? '/consulta/save' : '/consulta/update'}" th:object="${consulta}" method="post">
+                <input type="hidden" th:field="*{id}">
+
+                <div class="col-12">
+                    <input class="form-control" type="text" th:field="*{valor}"  placeholder="Valor">
+                </div>
+                <br>
+                <div class="col-12">
+                    <input class="form-control" type="text" th:field="*{observacao}"  placeholder="Observacao">
+                </div>
+                <br>
+                <div class="col-12">
+                    <input class="form-control" type="text" th:field="*{data}"  placeholder="data">
+                </div>
+                <br>
+                <input class="btn btn-success btn-sm" type="submit" value="Enviar">
+            </form>
         </div>
-    </div>
-</nav>
-<main class="container">
-    <br><br>
-    <div class="container">
-        <h1>Cadastro de Consultas</h1>
-
-        <hr>
-        <form th:action="@{${consulta.id == null} ? '/consulta/save' : '/consulta/update'}" th:object="${consulta}" method="post">
-            <input type="hidden" th:field="*{id}">
-
-            <div class="col-12">
-                <input class="form-control" type="text" th:field="*{valor}"  placeholder="Valor">
-            </div>
-            <br>
-            <div class="col-12">
-                <input class="form-control" type="text" th:field="*{observacao}"  placeholder="Observacao">
-            </div>
-            <br>
-            <div class="col-12">
-                <input class="form-control" type="text" th:field="*{data}"  placeholder="data">
-            </div>
-            <br>
-            <input class="btn btn-success btn-sm" type="submit" value="Enviar">
-        </form>
-    </div>
-</main>
+    </main>
 </body>
 </html>

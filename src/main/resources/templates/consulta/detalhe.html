@@ -1,67 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalhes</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-</head>
+<html th:replace="~{fragments/layout :: layout(~{::head},~{::main})}">
+<head th:replace="~{fragments/head :: head(~{})}"></head>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary" data-bs-theme="dark">
+<main>
     <div class="container">
-        <a class="navbar-brand" href="/">App de Consulta Médica</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link"  href="/consulta/list">Consultas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"  href="/paciente/list">Pacientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/medico/list">Médicos</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="container">
-    <br><br>
-    <div class="container ">
-        <h1>Detalhes da Consulta</h1>
-        <hr>
-        <div class="card">
-            <div class="card-body">
-                <label>Identificador:
-                    <input class="form-control" type="text" th:field="${consulta.id}" disabled>
-                </label>
-                <label>Valor:
-                    <input class="form-control" type="text" th:field="${consulta.valor}" disabled>
-                </label>
-                <label>Paciente:
-                    <input class="form-control" type="text" th:field="${consulta.paciente.nome}" disabled>
-                </label>
-                <br>
-                <hr>
-                <label>Médico:
-                    <input class="form-control" type="text" th:field="${consulta.medico.nome}" disabled>
-                </label>
-                <label>Data:
-                    <input class="form-control" type="text" th:field="${consulta.data}" disabled>
-                </label>
-                <label>Observação:
-                    <input class="form-control" type="text" th:field="${consulta.observacao}" disabled>
-                </label>
+        <br><br>
+        <div class="container ">
+            <h1>Detalhes da Consulta</h1>
+            <hr>
+            <div class="card">
+                <div class="card-body">
+                    <label>Identificador:
+                        <input class="form-control" type="text" th:field="${consulta.id}" disabled>
+                    </label>
+                    <label>Valor:
+                        <input class="form-control" type="text" th:field="${consulta.valor}" disabled>
+                    </label>
+                    <label>Paciente:
+                        <input class="form-control" type="text" th:field="${consulta.paciente.nome}" disabled>
+                    </label>
+                    <br>
+                    <hr>
+                    <label>Médico:
+                        <input class="form-control" type="text" th:field="${consulta.medico.nome}" disabled>
+                    </label>
+                    <label>Data:
+                        <input class="form-control" type="text" th:field="${consulta.data}" disabled>
+                    </label>
+                    <label>Observação:
+                        <input class="form-control" type="text" th:field="${consulta.observacao}" disabled>
+                    </label>
 
+                </div>
             </div>
+            <br>
+            <a class="btn btn-sm btn-primary" href="/consulta/list">Voltar</a>
         </div>
-
     </div>
-</div>
-
+</main>
 </body>
 </html>

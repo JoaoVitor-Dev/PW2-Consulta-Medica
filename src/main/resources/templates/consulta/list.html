@@ -1,70 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Consultas</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-    <style>
-       .teste:hover{
-           background-color: blue;
-       }
-    </style>
-</head>
+<html th:replace="~{fragments/layout :: layout(~{::head},~{::main})}">
+<head th:replace="~{fragments/head :: head(~{})}"></head>
 <body>
-
-<nav class="navbar navbar-expand-lg bg-primary bg-body-tertiary" data-bs-theme="dark">
+<main>
     <div class="container">
-        <a class="navbar-brand" href="/">App de Consulta Médica</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link"  href="/consulta/list">Consultas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"  href="/paciente/list">Pacientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/medico/list">Médicos</a>
-                </li>
-            </ul>
+        <br><br>
+        <div class="container ">
+            <h1>Lista de Consultas</h1>
+            <!--<a class="btn btn-warning btn-sm " href="/consulta/form">Nova Consulta</a>-->
+            <hr>
+            <table class="table table-sm table-striped " border="1">
+                <thead class="table-dark">
+                <tr>
+                    <th>Paciente</th>
+                    <th>Médico</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th>Detalhes</th>
+                </tr>
+                </thead>
+                <tr class="teste" th:each="c : ${consulta}">
+                    <td th:text="${c.paciente.getNome()}"></td>
+                    <td th:text="${c.medico.getNome()}"></td>
+                    <td th:text="${c.valor}"></td>
+                    <td th:text="${#temporals.format(c.data, 'dd/MM/yyyy')}"></td>
+                    <td><a class="btn btn-info btn-sm" th:href="@{/consulta/{id}(id=${c.id})}">Detalhes</a></td>
+                </tr>
+            </table>
+            <span class="badge text-bg-success">Total R$: <span th:text="${#numbers.formatDecimal(vTotal,1, 2, 'COMMA')}"></span> </span>
         </div>
     </div>
-</nav>
-
-<div class="container">
-    <br><br>
-    <div class="container ">
-       <h1>Lista de Consultas</h1>
-        <!--<a class="btn btn-warning btn-sm " href="/consulta/form">Nova Consulta</a>-->
-        <hr>
-        <table class="table table-sm table-striped " border="1">
-            <thead class="table-dark">
-            <tr>
-                <th>Paciente</th>
-                <th>Médico</th>
-                <th>Valor</th>
-                <th>Data</th>
-                <th>Detalhes</th>
-            </tr>
-            </thead>
-            <tr class="teste" th:each="c : ${consulta}">
-                <td th:text="${c.paciente.getNome()}"></td>
-                <td th:text="${c.medico.getNome()}"></td>
-                <td th:text="${c.valor}"></td>
-                <td th:text="${#temporals.format(c.data, 'dd/MM/yyyy')}"></td>
-                <td><a class="btn btn-info btn-sm" th:href="@{/consulta/{id}(id=${c.id})}">Detalhes</a></td>
-            </tr>
-        </table>
-         <span class="badge text-bg-success">Total R$: <span th:text="${#numbers.formatDecimal(vTotal,1, 2, 'COMMA')}"></span> </span>
-    </div>
-</div>
-
-
+</main>
 </body>
 </html>
