@@ -34,7 +34,6 @@ public class ConsultaRepository {
         return (Double) total.get(0);
     }
 
-
     public void save(Consulta consulta){
         em.persist(consulta);
     }
@@ -47,6 +46,5 @@ public class ConsultaRepository {
     public void update(Consulta consulta){
         em.merge(consulta);
     }
-
 
 }

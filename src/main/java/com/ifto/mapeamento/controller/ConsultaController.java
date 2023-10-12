@@ -4,6 +4,8 @@ import com.ifto.mapeamento.model.entity.Consulta;
 import com.ifto.mapeamento.model.entity.Medico;
 import com.ifto.mapeamento.model.entity.Paciente;
 import com.ifto.mapeamento.model.repository.ConsultaRepository;
+import com.ifto.mapeamento.model.repository.MedicoRepository;
+import com.ifto.mapeamento.model.repository.PacienteRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,12 @@ public class ConsultaController {
     @Autowired
     ConsultaRepository repository;
 
+    @Autowired
+    PacienteRepository pacienteRepository;
+
+    @Autowired
+    MedicoRepository medicoRepository;
+
     @ResponseBody
     @GetMapping("/list")
     public ModelAndView listarConsultas(ModelMap model) {
@@ -29,8 +37,11 @@ public class ConsultaController {
     }
 
     @GetMapping("/form")
-    public String form(Consulta consulta){
-        return "/consulta/form";
+    public ModelAndView formConsulta(ModelMap model){
+        model.addAttribute("paciente",pacienteRepository.pacientes());
+        model.addAttribute("medico", medicoRepository.medicos());
+        model.addAttribute("consulta", new Consulta());
+        return new ModelAndView("consulta/form");
     }
 
     @GetMapping("/{id}")

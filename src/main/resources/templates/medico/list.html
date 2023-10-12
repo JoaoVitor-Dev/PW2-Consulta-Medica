@@ -21,7 +21,6 @@
             <table class="table table-sm table-striped " border="1">
                 <thead class="table-dark">
                 <tr>
-                    <th>ID</th>
                     <th>Nome</th>
                     <th>CRM</th>
                     <th>CPF</th>
@@ -31,7 +30,6 @@
                 </tr>
                 </thead>
                 <tr th:each="m : ${medico}">
-                    <td th:text="${m.id}"></td>
                     <td th:text="${m.nome}"></td>
                     <td th:text="${m.crm}"></td>
                     <td th:text="${m.cpf}"></td>

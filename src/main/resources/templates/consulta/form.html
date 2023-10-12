@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html th:replace="~{fragments/layout :: layout(~{::head},~{::main})}">
 <head th:replace="~{fragments/head :: head(~{})}"></head>
+
 <body>
-<main>
     <main class="container">
         <br><br>
         <div class="container">
-            <h1>Cadastro de Consultas</h1>
+            <h1>Cadastro de Consulta</h1>
             <hr>
             <form th:action="@{${consulta.id == null} ? '/consulta/save' : '/consulta/update'}" th:object="${consulta}" method="post">
                 <input type="hidden" th:field="*{id}">
 
-                <div class="col-12">
-                    <input class="form-control" type="text" th:field="*{valor}"  placeholder="Valor">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Paciente: </label>
+                        <select id="paciente" name="paciente" th:field="*{paciente.id}" class="form-select">
+                            <option value="">Selecione...</option>
+                            <option th:each="p : ${paciente}"
+                                    th:value="${p.id}"
+                                    th:text="${p.nome}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Médico: </label>
+                        <select id="medico" name="medico" th:field="*{medico.id}" class="form-select">
+                            <option value="">Selecione...</option>
+                            <option th:each="m : ${medico}"
+                                    th:value="${m.id}"
+                                    th:text="${m.nome}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Valor da Consulta: </label>
+                        <input class="form-control" type="text" th:field="*{valor}"  placeholder="Valor">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Data da consulta: </label>
+                        <input class="form-control" type="date" th:field="*{data}"  placeholder="data">
+                    </div>
                 </div>
                 <br>
                 <div class="col-12">
+                    <label>Observação:</label>
                     <input class="form-control" type="text" th:field="*{observacao}"  placeholder="Observacao">
                 </div>
                 <br>
-                <div class="col-12">
-                    <input class="form-control" type="text" th:field="*{data}"  placeholder="data">
-                </div>
-                <br>
+                <a class="btn btn-sm btn-primary" href="/consulta/list">Voltar</a>
                 <input class="btn btn-success btn-sm" type="submit" value="Enviar">
             </form>
         </div>

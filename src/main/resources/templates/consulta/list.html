@@ -3,11 +3,15 @@
 <head th:replace="~{fragments/head :: head(~{})}"></head>
 <body>
 <main>
-    <div class="container">
+    <div class="container-fluid">
         <br><br>
         <div class="container ">
-            <h1>Lista de Consultas</h1>
-            <!--<a class="btn btn-warning btn-sm " href="/consulta/form">Nova Consulta</a>-->
+            <div class="d-flex justify-content-between">
+                <h1>Lista de Consultas</h1>
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-success btn-sm " href="/consulta/form">+ Novo Consulta</a>
+                </div>
+            </div>
             <hr>
             <table class="table table-sm table-striped " border="1">
                 <thead class="table-dark">
