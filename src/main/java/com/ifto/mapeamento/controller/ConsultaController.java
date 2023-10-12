@@ -41,7 +41,7 @@ public class ConsultaController {
         model.addAttribute("paciente",pacienteRepository.pacientes());
         model.addAttribute("medico", medicoRepository.medicos());
         model.addAttribute("consulta", new Consulta());
-        return new ModelAndView("consulta/form");
+        return new ModelAndView("consulta/form", model);
     }
 
     @GetMapping("/{id}")
