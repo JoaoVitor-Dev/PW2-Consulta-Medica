@@ -1,0 +1,8 @@
+.table tbody tr:hover{
+    background-color: #10334e;
+    color: #fff!important;
+}
+
+.table tbody tr{
+    zoom: 0.9;
+}

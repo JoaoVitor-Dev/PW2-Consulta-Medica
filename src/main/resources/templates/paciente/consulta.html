@@ -6,9 +6,9 @@
     <div class="container">
         <br><br>
         <div class="container">
-            <h1>Paciente: <span th:text="${paciente.nome}"></span></h1>
+            <h1>Paciente <span th:text="${paciente.nome}"></span></h1>
             <hr>
-            <table class="table table-sm table-striped " border="1">
+            <table class="table table-sm" border="1">
                 <thead class="table-dark">
                 <tr>
                     <th>Valor</th>
@@ -21,7 +21,7 @@
                     <td th:text="${m.valor}"></td>
                     <td th:text="${#temporals.format(m.data, 'dd/MM/yyyy')}"></td>
                     <td th:text="${m.medico.getNome()}"></td>
-                    <td><a class="btn btn-info btn-sm" th:href="@{/consulta/{id}(id=${m.id})}">Detalhes</a></td>
+                    <td><a class="btn btn-outline-info btn-sm" th:href="@{/consulta/{id}(id=${m.id})}">Detalhes</a></td>
                 </tr>
             </table>
             <span class="badge text-bg-success">Total R$: <span th:text="${#numbers.formatDecimal(paciente.valorTotal(),1, 2, 'COMMA')}"></span> </span>
