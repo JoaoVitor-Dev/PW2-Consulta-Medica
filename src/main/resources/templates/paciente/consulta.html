@@ -6,7 +6,12 @@
     <div class="container">
         <br><br>
         <div class="container">
-            <h1>Paciente <span th:text="${paciente.nome}"></span></h1>
+            <div class="d-flex justify-content-start">
+                <h2>Paciente <span th:text="${paciente.nome}"></span> | </h2>
+                <div class="d-flex align-items-center">
+                    <span class="badge text-bg-warning">Total R$: <span th:text="${#numbers.formatDecimal(paciente.valorTotal(),1, 2, 'COMMA')}"></span> </span>
+                </div>
+            </div>
             <hr>
             <table class="table table-sm" border="1">
                 <thead class="table-dark">
@@ -24,7 +29,7 @@
                     <td><a class="btn btn-outline-info btn-sm" th:href="@{/consulta/{id}(id=${m.id})}">Detalhes</a></td>
                 </tr>
             </table>
-            <span class="badge text-bg-success">Total R$: <span th:text="${#numbers.formatDecimal(paciente.valorTotal(),1, 2, 'COMMA')}"></span> </span>
+
         </div>
     </div>
 </main>

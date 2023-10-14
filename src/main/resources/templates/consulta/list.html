@@ -7,7 +7,14 @@
         <br><br>
         <div class="container ">
             <div class="d-flex justify-content-between">
-                <h1>Consultas realizadas</h1>
+
+                <div class="d-flex justify-content-start">
+                    <h2>Consultas realizadas | </h2>
+                    <div class="d-flex align-items-center">
+                        <span class="badge text-bg-warning"> Total R$: <span th:text="${#numbers.formatDecimal(vTotal,1, 2, 'COMMA')}"></span> </span>
+                    </div>
+                </div>
+
                 <div class="d-flex align-items-center">
                     <a class="btn btn-success btn-sm " href="/consulta/form">+ Novo Consulta</a>
                 </div>
@@ -31,7 +38,7 @@
                     <td><a class="btn btn-info btn-sm" th:href="@{/consulta/{id}(id=${c.id})}">Detalhes</a></td>
                 </tr>
             </table>
-            <span class="badge text-bg-success">Total R$: <span th:text="${#numbers.formatDecimal(vTotal,1, 2, 'COMMA')}"></span> </span>
+
         </div>
     </div>
 </main>
