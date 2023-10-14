@@ -37,7 +37,7 @@
                         <td> <a class="btn btn-danger btn-sm" onclick="return window.confirm('Tem certeza que deseja excluir este Paciente?')" th:href="@{/paciente/removePaciente/{id}(id=${p.id})}">Excluir</a></td>
                     </tr>
                 </table>
-
+            <p th:text="${!mensagem}"></p>
         </div>
     </div>
 </main>
