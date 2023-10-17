@@ -26,7 +26,7 @@
                     <td th:text="${m.valor}"></td>
                     <td th:text="${#temporals.format(m.data, 'dd/MM/yyyy')}"></td>
                     <td th:text="${m.medico.getNome()}"></td>
-                    <td><a class="btn btn-outline-info btn-sm" th:href="@{/consulta/{id}(id=${m.id})}">Detalhes</a></td>
+                    <td><a class="btn btn-outline-info btn-sm " th:href="@{/consulta/{id}(id=${m.id})}">Detalhes</a></td>
                 </tr>
             </table>
 

@@ -47,10 +47,11 @@ public class PacienteController {
     }
 
     @GetMapping("/removePaciente/{id}")
-    public ModelAndView remove(@PathVariable("id") Long id, RedirectAttributes attributes){
+    public ModelAndView remove(@PathVariable("id") Long id, RedirectAttributes attributes, ModelMap model){
 
         if(!repository.paciente(id).getConsultas().isEmpty()){
-            attributes.addAttribute("mensage,", "Não é permitido excluir pacientes com consultas!");
+            attributes.addAttribute("mensagem,", "Não é permitido excluir pacientes com consultas!");
+            return new ModelAndView("redirect:/paciente/list");
         }
 
         repository.remove(id);

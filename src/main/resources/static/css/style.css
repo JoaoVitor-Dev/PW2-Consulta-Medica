@@ -1,3 +1,5 @@
+
+
 .table tbody tr:hover{
     background-color: #10334e;
     color: #fff!important;
@@ -6,3 +8,42 @@
 .table tbody tr{
     zoom: 0.9;
 }
+
+.elevate:hover{
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.36);
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+/*body:after, body:before{*/
+/*    content: '';*/
+/*    display: block;*/
+/*    position: fixed;*/
+/*    z-index: -1;*/
+/*    top: 0;*/
+/*    width: 100%;*/
+/*    height: 100vmax;*/
+/*    background: rgba(0,0,0,0.5);*/
+/*    animation: background_rotate 90s linear infinite;*/
+/*}*/
+
+/*body:before{*/
+/*    right: 15%;*/
+/*    animation-delay: -30s;*/
+/*    animation-direction: reverse;*/
+/*}*/
+
+/*body:after{*/
+/*    left: 15%;*/
+/*}*/
+
+
+@keyframes background_rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+

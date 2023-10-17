@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-md-6">
                         <label>Data da consulta: </label>
-                        <input class="form-control" type="text" th:field="*{data}" placeholder="data">
+                        <input class="form-control" type="datetime-local" th:field="*{data}" placeholder="data">
                     </div>
                 </div>
                 <br>
@@ -50,8 +50,8 @@
                     <input class="form-control" type="text" th:field="*{observacao}"  placeholder="Observacao">
                 </div>
                 <br>
-                <a class="btn btn-sm btn-primary" href="/consulta/list">Voltar</a>
-                <input class="btn btn-success btn-sm" type="submit" value="Enviar">
+                <a class="btn btn-sm btn-primary elevate" href="/consulta/list">Voltar</a>
+                <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
             </form>
         </div>
     </main>

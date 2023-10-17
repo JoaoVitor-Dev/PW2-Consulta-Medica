@@ -1,6 +1,7 @@
 package com.ifto.mapeamento.model.entity;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Consulta {
     private Long id;
     private double valor;
     private String observacao;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime data;
 
     @ManyToOne
