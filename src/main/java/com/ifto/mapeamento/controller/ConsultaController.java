@@ -56,6 +56,16 @@ public class ConsultaController {
         return new ModelAndView("redirect:/consulta/list");
     }
 
+    @GetMapping("/editConsulta/{id}")
+    public ModelAndView editMedico(@PathVariable("id") Long id, ModelMap model) {
+        model.addAttribute("consulta", repository.consulta(id));
+        List<Medico> medicos = medicoRepository.medicos();
+        List<Paciente> pacientes = pacienteRepository.pacientes();
+        model.addAttribute("medico", medicos);
+        model.addAttribute("paciente", pacientes);
+        return new ModelAndView("/consulta/form", model);
+    }
+
     @GetMapping("/removeConsulta/{id}")
     public ModelAndView remove(@PathVariable("id") Long id){
         repository.remove(id);

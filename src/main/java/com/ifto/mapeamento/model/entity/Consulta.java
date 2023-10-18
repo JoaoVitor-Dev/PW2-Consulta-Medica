@@ -1,6 +1,7 @@
 package com.ifto.mapeamento.model.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -8,8 +9,10 @@ import java.util.List;
 
 @Entity
 public class Consulta {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
+    @GeneratedValue(generator = "inc")
+    @GenericGenerator(name = "inc", strategy = "increment")
     private Long id;
     private double valor;
     private String observacao;

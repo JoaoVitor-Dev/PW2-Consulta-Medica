@@ -28,6 +28,7 @@
                     <th>Valor</th>
                     <th>Data</th>
                     <th>Detalhes</th>
+                    <th>Ações</th>
                 </tr>
                 </thead>
                 <tr class="teste" th:each="c : ${consulta}">
@@ -36,6 +37,7 @@
                     <td th:text="${c.valor}"></td>
                     <td th:text="${#temporals.format(c.data, 'dd/MM/yyyy')}"></td>
                     <td><a class="btn btn-info btn-sm elevate" th:href="@{/consulta/{id}(id=${c.id})}">Detalhes</a></td>
+                    <td><a class="btn btn-warning btn-sm elevate" style="margin-right: 1px" th:href="@{/consulta/editConsulta/{id}(id=${c.id})}"><img src="/images/edit_FILL0_wght200_GRAD0_opsz24.svg"></a><a class="btn btn-danger btn-sm elevate" onclick="return window.confirm('Tem certeza que deseja excluir esta Consulta?')" th:href="@{/consulta/removeConsulta/{id}(id=${c.id})}"><img src="/images/delete_FILL0_wght200_GRAD0_opsz24.svg"></a></td>
                 </tr>
             </table>
 
