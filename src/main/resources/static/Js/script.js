@@ -4,6 +4,7 @@ let modal = document.getElementById("modal")
 let fundo = document.getElementById("fundo")
 let id_paciente = document.getElementById("id-paciente")
 
+
 input_paciente.addEventListener("keypress", mostraModal)
 btn_close.addEventListener("click", fecharModal)
 
@@ -28,3 +29,13 @@ function capturaPaciente(id, nome){
     input_paciente.value = nome
     fecharModal()
 }
+
+document.getElementById("filtra-paciente").addEventListener("input", function () {
+    var textodigitado = this.value.toLowerCase()
+    let valor_linhas_tabela = document.querySelectorAll('#table-pacientes tbody tr')
+
+    valor_linhas_tabela.forEach(function (linha){
+        var valorLinha = linha.textContent.toLowerCase();
+        linha.style.display = valorLinha.includes(textodigitado) ? '' : 'none'
+    })
+})
