@@ -12,16 +12,12 @@
                 <input type="hidden" th:field="*{id}">
 
                 <div class="row">
+                    <label>Pesquisar Paciente:</label>
+                    <input th:field="*{paciente.id}" id="id-paciente" type="hidden">
                     <div class="col-md-6">
-                        <label>Paciente: </label>
-                        <select id="paciente" name="paciente" th:field="*{paciente.id}" class="form-select">
-                            <option value="">Selecione...</option>
-                            <option th:each="p : ${paciente}"
-                                    th:value="${p.id}"
-                                    th:text="${p.nome}">
-                            </option>
-                        </select>
+                        <input class="form-control" type="text" id="input-paciente" placeholder="Pesquise o Paciente">
                     </div>
+
                     <div class="col-md-6">
                         <label>Médico: </label>
                         <select id="medico" name="medico" th:field="*{medico.id}" class="form-select">
@@ -54,6 +50,26 @@
                 <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
             </form>
         </div>
+        <section id="fundo" class="modal-wrapper">
+            <div id="modal" class="card" style="">
+                <button class="btn btn-sm" type="button" id="btn-close"><img src="/images/close.svg"></button>
+                <table class="table table-sm " border="1">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>CPF</th>
+                    </tr>
+                    </thead>
+                    <tr th:attr="onclick=|capturaPaciente('${p.id}', '${p.nome}' )|"  th:each="p : ${paciente}">
+                        <td th:text="${p.nome}"></td>
+                        <td th:text="${p.telefone}"></td>
+                        <td th:text="${p.cpf}"></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
     </main>
+
 </body>
 </html>
