@@ -27,14 +27,14 @@
                             <th>Telefone</th>
                             <th>CPF</th>
                             <th>Consultas</th>
-                            <td>Ações</td>
+                            <th>Ações</th>
                         </tr>
                         </thead>
                         <tr th:each="p : ${paciente}">
                             <td th:text="${p.nome}"></td>
                             <td th:text="${p.telefone}"></td>
                             <td th:text="${p.cpf}"></td>
-                            <td> <a class="btn btn-info btn-sm elevate" th:href="@{/paciente/{id}(id=${p.id})}">Ver consultas</a></td>
+                            <td><a class="btn btn-info btn-sm elevate" th:href="@{/paciente/{id}(id=${p.id})}"><img src="/images/clinical_notes.svg">Visualizar</a></td>
                             <td> <a class="btn btn-warning btn-sm elevate" style="margin-right: 1px" th:href="@{/paciente/editPaciente/{id}(id=${p.id})}"><img src="/images/edit_FILL0_wght200_GRAD0_opsz24.svg"></a><a class="btn btn-danger btn-sm elevate" onclick="return window.confirm('Tem certeza que deseja excluir este Paciente?')" th:href="@{/paciente/removePaciente/{id}(id=${p.id})}"><img src="/images/delete_FILL0_wght200_GRAD0_opsz24.svg"></a></td>
                         </tr>
                     </table>

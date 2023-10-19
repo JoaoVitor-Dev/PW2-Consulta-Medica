@@ -29,7 +29,7 @@
                     <td th:text="${m.nome}"></td>
                     <td th:text="${m.crm}"></td>
                     <td th:text="${m.cpf}"></td>
-                    <td> <a class="btn btn-info btn-sm elevate" th:href="@{/medico/{id}(id=${m.id})}">Ver consultas</a></td>
+                    <td> <a class="btn btn-info btn-sm elevate" th:href="@{/medico/{id}(id=${m.id})}"><img src="/images/clinical_notes.svg"></img>Visualizar</a></td>
                     <td> <a class="btn btn-warning btn-sm elevate" style="margin-right: 1px" th:href="@{/medico/editMedico/{id}(id=${m.id})}"><img src="/images/edit_FILL0_wght200_GRAD0_opsz24.svg"></a><a class="btn btn-danger btn-sm elevate" onclick="return window.confirm('Tem certeza que deseja excluir este Médico?')" th:href="@{/medico/removeMedico/{id}(id=${m.id})}"><img src="/images/delete_FILL0_wght200_GRAD0_opsz24.svg"></a></td>
 
                 </tr>
