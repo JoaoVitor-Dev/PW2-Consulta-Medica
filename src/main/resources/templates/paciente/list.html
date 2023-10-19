@@ -11,6 +11,9 @@
         <br><br>
         <div class="container">
             <div class="d-flex justify-content-between">
+                <div class="mt-1 " th:if="${erro!=null}">
+                    <p class="alert alert-danger" th:text="${erro}"></p>
+                </div>
                 <h2>Pacientes cadastrados</h2>
                 <div class="d-flex align-items-center">
                     <a class="btn btn-success btn-sm elevate " href="/paciente/form">+ Novo Paciente</a>
@@ -35,7 +38,7 @@
                             <td> <a class="btn btn-warning btn-sm elevate" style="margin-right: 1px" th:href="@{/paciente/editPaciente/{id}(id=${p.id})}"><img src="/images/edit_FILL0_wght200_GRAD0_opsz24.svg"></a><a class="btn btn-danger btn-sm elevate" onclick="return window.confirm('Tem certeza que deseja excluir este Paciente?')" th:href="@{/paciente/removePaciente/{id}(id=${p.id})}"><img src="/images/delete_FILL0_wght200_GRAD0_opsz24.svg"></a></td>
                         </tr>
                     </table>
-            <p th:text="${mensagem}"></p>
+
         </div>
     </div>
 </main>
