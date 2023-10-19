@@ -40,17 +40,17 @@ public class PacienteController {
     }
 
     @PostMapping("/save")
-    public ModelAndView salvarPaciente(Paciente paciente, ModelMap model){
+    public ModelAndView salvarPaciente(Paciente paciente, ModelMap model, RedirectAttributes attributes){
         repository.save(paciente);
-        model.addAttribute("mensagem", "Paciente cadastrado com sucesso!");
-        return new ModelAndView("redirect:/paciente/list", model);
+        attributes.addFlashAttribute("mensagem", "Paciente cadastrado com sucesso!");
+        return new ModelAndView("redirect:/paciente/list");
     }
 
     @GetMapping("/removePaciente/{id}")
     public ModelAndView remove(@PathVariable("id") Long id, RedirectAttributes attributes, ModelMap model){
 
         if(!repository.paciente(id).getConsultas().isEmpty()){
-            attributes.addAttribute("mensagem,", "Paciente possui consulta");
+            attributes.addFlashAttribute("mensagem", "Não é possível deletar paciente que possuí consultas!");
             return new ModelAndView("redirect:/paciente/list");
         }
 
