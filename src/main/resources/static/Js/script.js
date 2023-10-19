@@ -19,8 +19,12 @@ function pegaValor(){
 
 function mostraModal(){
     console.log(modal)
+    input_paciente.blur()
+    let campoFiltraPaciente = document.getElementById("filtra-paciente")
+    campoFiltraPaciente.focus()
     modal.style.display = "block"
     fundo.style.display = "flex"
+
 }
 
 function capturaPaciente(id, nome){

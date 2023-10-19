@@ -10,11 +10,10 @@
             <hr>
             <form th:action="@{${consulta.id == null} ? '/consulta/save' : '/consulta/update'}" th:object="${consulta}" method="post">
                 <input type="hidden" th:field="*{id}">
-
+                <input th:field="*{paciente.id}" id="id-paciente" type="hidden">
                 <div class="row">
-                    <label>Pesquisar Paciente:</label>
-                    <input th:field="*{paciente.id}" id="id-paciente" type="hidden">
                     <div class="col-md-6">
+                        <label>Pesquisar Paciente:</label>
                         <input th:field="*{paciente.nome}" class="form-control" type="text" id="input-paciente" placeholder="Pesquise o Paciente">
                     </div>
 
@@ -52,12 +51,13 @@
         </div>
         <section id="fundo" class="modal-wrapper">
             <div id="modal" class="card" style="">
-                <div >
-                    <input id="filtra-paciente" class="form-control" type="text" placeholder="Nome do Paciente">
-                    <button class="btn btn-info btn-sm" type="button"><img src="/images/search_FILL0_wght400_GRAD0_opsz24.svg"></button>
+                <div class="d-flex justify-content-between">
+                    <div class="col-md-8">
+                        <input id="filtra-paciente" class="form-control" type="text" placeholder="Nome do Paciente">
+                    </div>
                     <button class="btn btn-sm" type="button" id="btn-close"><img src="/images/close.svg"></button>
                 </div>
-
+                <br>
                 <table id="table-pacientes" class="table table-sm " border="1">
                     <thead class="table-dark">
                     <tr>
