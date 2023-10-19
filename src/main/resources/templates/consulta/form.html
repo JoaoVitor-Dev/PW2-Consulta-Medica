@@ -15,7 +15,7 @@
                     <label>Pesquisar Paciente:</label>
                     <input th:field="*{paciente.id}" id="id-paciente" type="hidden">
                     <div class="col-md-6">
-                        <input class="form-control" type="text" id="input-paciente" placeholder="Pesquise o Paciente">
+                        <input th:field="*{paciente.nome}" class="form-control" type="text" id="input-paciente" placeholder="Pesquise o Paciente">
                     </div>
 
                     <div class="col-md-6">
