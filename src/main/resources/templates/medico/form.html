@@ -31,6 +31,11 @@
             <br>
             <a class="btn btn-sm btn-primary elevate" href="/medico/list">Voltar</a>
             <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
+            <br>
+            <br>
+            <div class="alert alert-danger" role="alert" th:each="erro : ${#fields.detailedErrors()}">
+                <span th:text="${erro.message}"></span>
+            </div>
         </form>
 
     </div>

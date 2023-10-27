@@ -1,6 +1,7 @@
 package com.ifto.mapeamento.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 @DiscriminatorValue("M")
 @PrimaryKeyJoinColumn(name = "id")
 public class Medico extends Pessoa implements Serializable {
+    @NotBlank(message = "Por favor, informe o CRM!")
     private String crm;
 
     @OneToMany(mappedBy = "medico")

@@ -1,6 +1,7 @@
 package com.ifto.mapeamento.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -11,7 +12,13 @@ public class Pessoa {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Long id;
-    private String nome, telefone, cpf;
+    @NotBlank(message = "Por favor, informe o Nome!")
+    private String nome;
+    @NotBlank(message = "Por favor, informe o Telefone!")
+    private String telefone;
+
+    @NotBlank(message = "Por favor, informe o CPF!")
+    private String cpf;
 
     public Long getId() {
         return id;

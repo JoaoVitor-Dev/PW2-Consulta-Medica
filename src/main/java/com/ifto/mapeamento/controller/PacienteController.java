@@ -3,13 +3,12 @@ package com.ifto.mapeamento.controller;
 import com.ifto.mapeamento.model.entity.Paciente;
 import com.ifto.mapeamento.model.repository.PacienteRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -40,9 +39,12 @@ public class PacienteController {
     }
 
     @PostMapping("/save")
-    public ModelAndView salvarPaciente(Paciente paciente, ModelMap model, RedirectAttributes attributes){
+    public ModelAndView salvarPaciente(@Valid Paciente paciente, BindingResult result){
+
+        if(result.hasErrors())
+            return new ModelAndView("paciente/form");
+
         repository.save(paciente);
-        attributes.addFlashAttribute("mensagem", "Paciente cadastrado com sucesso!");
         return new ModelAndView("redirect:/paciente/list");
     }
 
@@ -65,7 +67,11 @@ public class PacienteController {
     }
 
     @PostMapping("/update")
-    public ModelAndView updatePaciente(Paciente paciente) {
+    public ModelAndView updatePaciente(@Valid Paciente paciente, BindingResult result) {
+
+        if(result.hasErrors())
+            return new ModelAndView("paciente/form");
+
         repository.update(paciente);
         return new ModelAndView("redirect:/paciente/list");
     }

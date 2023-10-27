@@ -7,6 +7,7 @@
     <div class="container">
         <h1>Cadastro de Paciente</h1>
         <hr>
+
         <form th:action="@{${paciente.id == null} ? '/paciente/save' : '/paciente/update'}" th:object="${paciente}" method="post">
             <input type="hidden" th:field="*{id}">
             <div class="col-12">
@@ -22,7 +23,13 @@
             </div>
             <br>
             <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
+            <br>
+            <br>
+            <div class="alert alert-danger" role="alert" th:each="erro : ${#fields.detailedErrors()}">
+                <span th:text="${erro.message}"></span>
+            </div>
         </form>
+
     </div>
 </main>
 </body>
