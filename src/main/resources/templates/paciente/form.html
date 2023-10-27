@@ -12,6 +12,7 @@
             <input type="hidden" th:field="*{id}">
             <div class="col-12">
                 <input class="form-control" type="text" th:field="*{nome}"  placeholder="Nome">
+                <label class="invalid-feedback" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></label>
             </div>
             <br>
             <div class="col-12">
