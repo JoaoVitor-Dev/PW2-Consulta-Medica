@@ -35,6 +35,12 @@
                 </tr>
             </table>
         </div>
+        <div class="mt-1 " th:if="${mensagemerro!=null}">
+            <p class="pop-up error" th:text="${mensagemerro}"></p>
+        </div>
+        <div class="mt-1 " th:if="${mensagemsucesso!=null}">
+            <p class="pop-up sucesso" th:text="${mensagemsucesso}"></p>
+        </div>
     </div>
 </main>
 </body>

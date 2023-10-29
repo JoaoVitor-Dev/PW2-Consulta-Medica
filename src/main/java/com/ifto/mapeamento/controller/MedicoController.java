@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Transactional
 @Controller
@@ -41,12 +42,13 @@ public class MedicoController {
     }
 
     @PostMapping("/save")
-    public ModelAndView salvarMedico(@Valid Medico medico, BindingResult result){
+    public ModelAndView salvarMedico(@Valid Medico medico, BindingResult result, RedirectAttributes attributes){
 
         if (result.hasErrors())
             return new ModelAndView("medico/form");
 
         repository.save(medico);
+        attributes.addFlashAttribute("mensagemsucesso", "Médico cadastrado com sucesso!");
         return new ModelAndView("redirect:/medico/list");
     }
 
