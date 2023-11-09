@@ -54,7 +54,7 @@
     min-height: 60px;
     position: fixed;
     right:var(--right-msg);
-    width: 360px;
+    width: 340px;
     border: none;
     z-index: 50;
     align-items: center;

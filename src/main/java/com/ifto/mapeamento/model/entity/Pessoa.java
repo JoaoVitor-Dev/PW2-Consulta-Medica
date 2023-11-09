@@ -1,18 +1,21 @@
 package com.ifto.mapeamento.model.entity;
 
+import com.ifto.mapeamento.model.validation.groups.Insert;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "tipo")
 public class Pessoa {
+    @NotNull(groups = Insert.class)
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Long id;
-    @NotBlank(message = "Por favor, informe o Nome!")
+    @NotBlank(message = "Digite o nome")
     private String nome;
     @NotBlank(message = "Por favor, informe o Telefone!")
     private String telefone;

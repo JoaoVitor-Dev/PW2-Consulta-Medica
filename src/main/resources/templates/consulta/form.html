@@ -47,6 +47,9 @@
                 <br>
                 <a class="btn btn-sm btn-primary elevate" href="/consulta/list">Voltar</a>
                 <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
+                <div class="alert alert-danger" role="alert" th:each="erro : ${#fields.detailedErrors()}">
+                    <span th:text="${erro.message}"></span>
+                </div>
             </form>
         </div>
         <section id="fundo" class="modal-wrapper">

@@ -1,5 +1,6 @@
 package com.ifto.mapeamento.model.entity;
 
+import com.ifto.mapeamento.model.validation.groups.Insert;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 

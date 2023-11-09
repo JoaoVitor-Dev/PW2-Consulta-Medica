@@ -1,7 +1,13 @@
 package com.ifto.mapeamento.model.entity;
 
+import com.ifto.mapeamento.model.validation.groups.Insert;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -9,21 +15,26 @@ import java.util.List;
 
 @Entity
 public class Consulta {
-
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Long id;
+    @NotNull(message = "Por favor, informe o Valor da consulta!")
     private double valor;
+    @NotBlank(message = "Por favor, informe a observacao da consulta!")
     private String observacao;
+    @NotBlank(message = "Por favor, informe a Data da consulta!", groups = Insert.class)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime data;
-
     @ManyToOne
+    @Valid
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "id_paciente")
     private Paciente paciente;
 
     @ManyToOne
+    @Valid
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "id_medico")
     private Medico medico;
 
