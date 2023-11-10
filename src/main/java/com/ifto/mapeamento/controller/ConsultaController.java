@@ -57,7 +57,7 @@ public class ConsultaController {
     public ModelAndView saveConsulta(@Validated(Insert.class)Consulta consulta, BindingResult result, ModelMap model){
 
         if (result.hasErrors()) {
-            model.addAttribute("pacientes", pacienteRepository.pacientes());
+            model.addAttribute("paciente", pacienteRepository.pacientes());
             model.addAttribute("medico", medicoRepository.medicos());
             return new ModelAndView("/consulta/form", model);
 

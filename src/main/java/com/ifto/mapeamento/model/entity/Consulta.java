@@ -19,9 +19,9 @@ public class Consulta {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Long id;
-    @NotNull(message = "Por favor, informe o Valor da consulta!")
+    @NotNull(message = "Por favor, informe o Valor da consulta!", groups = Insert.class)
     private double valor;
-    @NotBlank(message = "Digite observações da consulta")
+    @NotBlank(message = "Por favor, informe as Observações!", groups = Insert.class)
     private String observacao;
     @NotNull(message = "Por favor, informe a Data da consulta!", groups = Insert.class)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)

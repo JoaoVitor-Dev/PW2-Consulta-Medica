@@ -15,7 +15,7 @@ public class Pessoa {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Long id;
-    @NotBlank(message = "Digite o nome", groups = Insert.class)
+    @NotBlank(message = "Por favor, informe o nome!", groups = Insert.class)
     private String nome;
     @NotBlank(message = "Por favor, informe o Telefone!")
     private String telefone;

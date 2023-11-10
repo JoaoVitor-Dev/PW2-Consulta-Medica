@@ -21,7 +21,7 @@
 
                     <div class="col-md-6">
                         <label>Médico: </label>
-                        <select id="medico" name="medico" th:field="*{medico.id}" class="form-select">
+                        <select id="medico" name="medico" th:field="*{medico.id}" class="form-select" th:errorclass="is-invalid">
                             <option value="">Selecione...</option>
                             <option th:each="m : ${medico}"
                                     th:value="${m.id}"
@@ -36,14 +36,15 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Valor da Consulta: </label>
-                        <input class="form-control" type="text" th:field="*{valor}"  placeholder="Valor">
+                        <input class="form-control" type="text" th:field="*{valor}" placeholder="Valor" th:errorclass="is-invalid">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}"></div>
                     </div>
 
 
 
                     <div class="col-md-6">
                         <label>Data da consulta: </label>
-                        <input class="form-control" type="datetime-local" th:field="*{data}" placeholder="data">
+                        <input class="form-control" type="datetime-local" th:field="*{data}" placeholder="data" th:errorclass="is-invalid">
                     </div>
                 </div>
                 <br>
@@ -59,8 +60,10 @@
                 <a class="btn btn-sm btn-primary elevate" href="/consulta/list">Voltar</a>
 
                 <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
-                <div th:each="erro : ${#fields.detailedErrors()}">
-                    <span th:text="${erro.fieldName}+' '+${erro.message}"></span>
+
+                <br>
+                <div class="alert alert-danger" role="alert" th:each="erro : ${#fields.detailedErrors()}">
+                    <span th:text="${erro.message}"></span>
                 </div>
 
             </form>
