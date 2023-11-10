@@ -21,20 +21,18 @@ public class Consulta {
     private Long id;
     @NotNull(message = "Por favor, informe o Valor da consulta!")
     private double valor;
-    @NotBlank(message = "Por favor, informe a observacao da consulta!")
+    @NotBlank(message = "Digite observações da consulta")
     private String observacao;
-    @NotBlank(message = "Por favor, informe a Data da consulta!", groups = Insert.class)
+    @NotNull(message = "Por favor, informe a Data da consulta!", groups = Insert.class)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime data;
     @ManyToOne
     @Valid
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "id_paciente")
     private Paciente paciente;
 
     @ManyToOne
     @Valid
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "id_medico")
     private Medico medico;
 

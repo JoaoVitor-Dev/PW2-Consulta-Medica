@@ -6,10 +6,13 @@ import com.ifto.mapeamento.model.entity.Paciente;
 import com.ifto.mapeamento.model.repository.ConsultaRepository;
 import com.ifto.mapeamento.model.repository.MedicoRepository;
 import com.ifto.mapeamento.model.repository.PacienteRepository;
+import com.ifto.mapeamento.model.validation.groups.Insert;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,7 +54,14 @@ public class ConsultaController {
     }
 
     @PostMapping("/save")
-    public ModelAndView saveConsulta(Consulta consulta){
+    public ModelAndView saveConsulta(@Validated(Insert.class)Consulta consulta, BindingResult result, ModelMap model){
+
+        if (result.hasErrors()) {
+            model.addAttribute("pacientes", pacienteRepository.pacientes());
+            model.addAttribute("medico", medicoRepository.medicos());
+            return new ModelAndView("/consulta/form", model);
+
+        }
         repository.save(consulta);
         return new ModelAndView("redirect:/consulta/list");
     }

@@ -8,14 +8,16 @@
         <div class="container">
             <h1>Cadastro de Consulta</h1>
             <hr>
+
             <form th:action="@{${consulta.id == null} ? '/consulta/save' : '/consulta/update'}" th:object="${consulta}" method="post">
                 <input type="hidden" th:field="*{id}">
                 <input th:field="*{paciente.id}" id="id-paciente" type="hidden">
                 <div class="row">
                     <div class="col-md-6">
                         <label>Pesquisar Paciente:</label>
-                        <input th:field="*{paciente.nome}" class="form-control" type="text" id="input-paciente" placeholder="Pesquise o Paciente">
+                        <input th:field="*{paciente.nome}" class="form-control" type="text" id="input-paciente" placeholder="Pesquise o Paciente" th:errorclass="is-invalid">
                     </div>
+
 
                     <div class="col-md-6">
                         <label>Médico: </label>
@@ -27,6 +29,8 @@
                             </option>
                         </select>
                     </div>
+
+
                 </div>
                 <br>
                 <div class="row">
@@ -34,24 +38,36 @@
                         <label>Valor da Consulta: </label>
                         <input class="form-control" type="text" th:field="*{valor}"  placeholder="Valor">
                     </div>
+
+
+
                     <div class="col-md-6">
                         <label>Data da consulta: </label>
                         <input class="form-control" type="datetime-local" th:field="*{data}" placeholder="data">
                     </div>
                 </div>
                 <br>
+
                 <div class="col-12">
                     <label>Observação:</label>
-                    <input class="form-control" type="text" th:field="*{observacao}"  placeholder="Observacao">
+                    <input class="form-control" type="text" th:field="*{observacao}"  placeholder="Observacao" th:errorclass="is-invalid">
                 </div>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('observacao')}"
+                     th:errors="*{observacao}"></div>
                 <br>
+
                 <a class="btn btn-sm btn-primary elevate" href="/consulta/list">Voltar</a>
+
                 <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
-                <div class="alert alert-danger" role="alert" th:each="erro : ${#fields.detailedErrors()}">
-                    <span th:text="${erro.message}"></span>
+                <div th:each="erro : ${#fields.detailedErrors()}">
+                    <span th:text="${erro.fieldName}+' '+${erro.message}"></span>
                 </div>
+
             </form>
         </div>
+
+
+
         <section id="fundo" class="modal-wrapper">
             <div id="modal" class="card" style="">
                 <div class="d-flex justify-content-between">
@@ -77,6 +93,9 @@
                 </table>
             </div>
         </section>
+
+
+
     </main>
 
 </body>
