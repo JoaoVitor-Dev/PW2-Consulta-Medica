@@ -30,8 +30,8 @@ public class SecurityConfiguration {
                                         .requestMatchers("/medico/list").hasAnyRole("ADMIN")
                                         .requestMatchers("/paciente/consulta").permitAll()
                                         .requestMatchers("/consulta/form").hasAnyRole("ADMIN")
-                                        .requestMatchers(HttpMethod.POST,"/paciente/save").permitAll()
-                                        .requestMatchers(HttpMethod.POST,"/medico/save").hasAnyRole("ADMIN")
+                                        //.requestMatchers(HttpMethod.POST,"/paciente/save").permitAll()
+                                        //.requestMatchers(HttpMethod.POST,"/medico/save").hasAnyRole("ADMIN")
                                         .anyRequest() //define que a configuração é válida para qualquer requisição.
                                         .authenticated() //define que o usuário precisa estar autenticado.
                 )
