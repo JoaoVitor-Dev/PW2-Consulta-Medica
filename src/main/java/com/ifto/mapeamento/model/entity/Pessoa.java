@@ -10,14 +10,15 @@ import org.hibernate.annotations.GenericGenerator;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "tipo")
 public class Pessoa {
-    @NotNull(groups = Insert.class)
+    @NotNull(message = "Por favor, preencha este campo", groups = Insert.class)
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Long id;
-    @NotBlank(message = "Por favor, informe o nome!", groups = Insert.class)
+    @NotBlank(message = "Por favor, informe o nome!")
+//    @NotBlank(message = "Por favor, informe o nome!", groups = Insert.class)
     private String nome;
-    @NotBlank(message = "Por favor, informe o Telefone!")
+    @NotBlank(message = "Por favor, informe o telefone!")
     private String telefone;
 
     @NotBlank(message = "Por favor, informe o CPF!")

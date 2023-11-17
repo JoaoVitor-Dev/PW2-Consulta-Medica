@@ -3,6 +3,7 @@ package com.ifto.mapeamento.model.entity;
 import com.ifto.mapeamento.model.validation.groups.Insert;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
@@ -19,7 +20,7 @@ public class Consulta {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Long id;
-    @NotNull(message = "Por favor, informe o Valor da consulta!", groups = Insert.class)
+    @Min(value = 1,message = "Por favor, informe o Valor da consulta!", groups = Insert.class)
     private double valor;
     @NotBlank(message = "Por favor, informe as Observações!", groups = Insert.class)
     private String observacao;
@@ -30,7 +31,6 @@ public class Consulta {
     @Valid
     @JoinColumn(name = "id_paciente")
     private Paciente paciente;
-
     @ManyToOne
     @Valid
     @JoinColumn(name = "id_medico")

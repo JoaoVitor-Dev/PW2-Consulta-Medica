@@ -11,24 +11,25 @@
         <form th:action="@{${paciente.id == null} ? '/paciente/save' : '/paciente/update'}" th:object="${paciente}" method="post">
             <input type="hidden" th:field="*{id}">
             <div class="col-12">
-                <input class="form-control" type="text" th:field="*{nome}"  placeholder="Nome">
+                <input class="form-control" type="text" th:field="*{nome}"  placeholder="Nome"  th:errorclass="is-invalid">
                 <label class="invalid-feedback" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></label>
             </div>
             <br>
             <div class="col-12">
-                <input class="form-control" type="text" th:field="*{telefone}"  placeholder="Telefone">
+                <input class="form-control" type="text" th:field="*{telefone}"  placeholder="Telefone" th:errorclass="is-invalid">
+                <label class="invalid-feedback" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></label>
+
             </div>
             <br>
             <div class="col-12">
-                <input class="form-control" type="text" th:field="*{cpf}"  placeholder="CPF">
+                <input class="form-control" type="text" th:field="*{cpf}"  placeholder="CPF" th:errorclass="is-invalid">
+                <label class="invalid-feedback" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></label>
             </div>
             <br>
             <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
             <br>
             <br>
-            <div class="alert alert-danger" role="alert" th:each="erro : ${#fields.detailedErrors()}">
-                <span th:text="${erro.message}"></span>
-            </div>
+
         </form>
 
     </div>

@@ -11,13 +11,16 @@
 
             <form th:action="@{${consulta.id == null} ? '/consulta/save' : '/consulta/update'}" th:object="${consulta}" method="post">
                 <input type="hidden" th:field="*{id}">
-                <input th:field="*{paciente.id}" id="id-paciente" type="hidden">
+
                 <div class="row">
                     <div class="col-md-6">
                         <label>Pesquisar Paciente:</label>
                         <input th:field="*{paciente.nome}" class="form-control" type="text" id="input-paciente" placeholder="Pesquise o Paciente" th:errorclass="is-invalid">
+                        <input th:field="*{paciente.id}" id="id-paciente" type="hidden" th:errorclass="is-invalid">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('paciente.id')}"
+                             th:errors="*{paciente.id}">
+                        </div>
                     </div>
-
 
                     <div class="col-md-6">
                         <label>Médico: </label>
@@ -28,8 +31,10 @@
                                     th:text="${m.nome}">
                             </option>
                         </select>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('medico.id')}"
+                             th:errors="*{medico.id}">
+                        </div>
                     </div>
-
 
                 </div>
                 <br>
@@ -41,20 +46,20 @@
                     </div>
 
 
-
                     <div class="col-md-6">
                         <label>Data da consulta: </label>
                         <input class="form-control" type="datetime-local" th:field="*{data}" placeholder="data" th:errorclass="is-invalid">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></div>
                     </div>
+
+                    <br>
                 </div>
                 <br>
-
                 <div class="col-12">
                     <label>Observação:</label>
                     <input class="form-control" type="text" th:field="*{observacao}"  placeholder="Observacao" th:errorclass="is-invalid">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('observacao')}" th:errors="*{observacao}"></div>
                 </div>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('observacao')}"
-                     th:errors="*{observacao}"></div>
                 <br>
 
                 <a class="btn btn-sm btn-primary elevate" href="/consulta/list">Voltar</a>
@@ -62,9 +67,6 @@
                 <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
 
                 <br>
-                <div class="alert alert-danger" role="alert" th:each="erro : ${#fields.detailedErrors()}">
-                    <span th:text="${erro.message}"></span>
-                </div>
 
             </form>
         </div>

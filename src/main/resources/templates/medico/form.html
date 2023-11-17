@@ -12,19 +12,23 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <input class="form-control" type="text" th:field="*{nome}"  placeholder="Nome completo">
+                    <input class="form-control" type="text" th:field="*{nome}"  placeholder="Nome completo" th:errorclass="is-invalid">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" th:field="*{crm}"  placeholder="CRM">
+                    <input class="form-control" type="text" th:field="*{crm}"  placeholder="CRM" th:errorclass="is-invalid">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('crm')}" th:errors="*{crm}"></div>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-6">
-                    <input class="form-control" type="text" th:field="*{cpf}"  placeholder="CPF">
+                    <input class="form-control" type="text" th:field="*{cpf}"  placeholder="CPF" th:errorclass="is-invalid">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('cpf')}" th:errors="*{crm}"></div>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" th:field="*{telefone}"  placeholder="Telefone">
+                    <input class="form-control" type="text" th:field="*{telefone}"  placeholder="Telefone" th:errorclass="is-invalid">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></div>
                 </div>
             </div>
             <br>
@@ -32,9 +36,6 @@
             <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
             <br>
             <br>
-            <div class="alert alert-danger" role="alert" th:each="erro : ${#fields.detailedErrors()}">
-                <span th:text="${erro.message}"></span>
-            </div>
         </form>
 
     </div>
