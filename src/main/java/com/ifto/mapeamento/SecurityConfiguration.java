@@ -34,6 +34,7 @@ public class SecurityConfiguration {
                                         //.requestMatchers(HttpMethod.POST,"/medico/save").hasAnyRole("ADMIN")
                                         .anyRequest() //define que a configuração é válida para qualquer requisição.
                                         .authenticated() //define que o usuário precisa estar autenticado.
+
                 )
                 .formLogin(customizer ->
                         customizer
