@@ -44,6 +44,7 @@ public class SecurityConfiguration {
                 )
                 .httpBasic(withDefaults()) //configura a autenticação básica (usuário e senha)
                 .logout(LogoutConfigurer::permitAll) //configura a funcionalidade de logout no Spring Security.
+
                 .rememberMe(withDefaults()); //permite que os usuários permaneçam autenticados mesmo após o fechamento do navegador
         return http.build();
     }
