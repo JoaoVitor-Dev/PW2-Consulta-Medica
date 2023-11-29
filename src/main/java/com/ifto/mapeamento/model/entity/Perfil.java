@@ -1,9 +1,11 @@
 package com.ifto.mapeamento.model.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 
+@Entity
 public abstract class Perfil implements GrantedAuthority {
 
     @Id
