@@ -19,4 +19,12 @@ INSERT INTO consulta(id, data, valor, id_medico, id_paciente, observacao) values
 INSERT INTO consulta(id, data, valor, id_medico, id_paciente, observacao) values (2, '20230921', 70.0, 1, 4, 'teste')
 INSERT INTO consulta(id, data, valor, id_medico, id_paciente, observacao) values (3, '20230921', 60.0, 1, 5, 'teste')
 
+INSERT INTO perfil(id, nome) values (1, 'ADMIN_RULE')
+INSERT INTO perfil(id, nome) values (2, 'USER_RULE')
+
+INSERT INTO usuario(id, login, senha) values (1, 'admin', '123')
+INSERT INTO usuario(id, login, senha) values (2, 'user', '123')
+
+
+
 

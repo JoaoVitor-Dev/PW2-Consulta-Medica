@@ -2,13 +2,18 @@ package com.ifto.mapeamento.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
+@Component
 @Entity
-public class Perfil implements GrantedAuthority {
+public class Perfil implements Serializable,GrantedAuthority {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
 
