@@ -1,10 +1,12 @@
 package com.ifto.mapeamento.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
+
 import org.springframework.data.annotation.Id;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+
 
 @Entity
 public class Usuario implements Serializable {
@@ -14,6 +16,8 @@ public class Usuario implements Serializable {
     private long id;
     private String login;
     private String senha;
+    @ManyToMany(cascade = {CascadeType.MERGE})
+    private Set<Perfil> perfis;
 
     public long getId() {
         return id;

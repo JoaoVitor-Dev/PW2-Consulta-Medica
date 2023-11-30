@@ -62,6 +62,7 @@ public class SecurityConfiguration {
         return new InMemoryUserDetailsManager(user1, admin);
     }
 
+
     /**
      * Com o método, instanciamos uma instância do encoder BCrypt e deixando o controle dessa instância como responsabilidade do Spring.
      * Agora, sempre que o Spring Security necessitar condificar um senha, ele já terá o que precisa configurado.

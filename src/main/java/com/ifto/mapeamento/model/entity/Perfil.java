@@ -6,13 +6,11 @@ import jakarta.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
-public abstract class Perfil implements GrantedAuthority {
-
+public class Perfil implements GrantedAuthority {
     @Id
     @GeneratedValue
     private Long id;
-    private String role;
-    private String login;
+    private String nome;
 
     public Long getId() {
         return id;
@@ -22,19 +20,16 @@ public abstract class Perfil implements GrantedAuthority {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getNome() {
+        return nome;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
+    @Override
+    public String getAuthority() {
+        return nome;
     }
 }
