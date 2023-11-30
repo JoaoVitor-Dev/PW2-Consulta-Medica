@@ -13,9 +13,11 @@
                     <li class="nav-item">
                         <a class="nav-link link-light"  href="/paciente/list">Pacientes</a>
                     </li>
-                    <li class="nav-item" sec:authorize="hasAnyRole('ADMIN')">
-                        <a class="nav-link link-light" href="/medico/list">Médicos</a>
-                    </li>
+                    <div sec:authorize="hasAnyRole('ADMIN')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('ADMIN')">
+                            <a class="nav-link link-light" href="/medico/list">Médicos</a>
+                        </li>
+                    </div>
                 </ul>
             </div>
             <form th:action="@{/logout}" method="post"><button class="btn btn-dark btn-sm" type="submit">Sair</button></form>
