@@ -1,6 +1,8 @@
 package com.ifto.mapeamento.controller;
 
+import com.ifto.mapeamento.Service.AgendaDeConsultas;
 import com.ifto.mapeamento.model.entity.Consulta;
+import com.ifto.mapeamento.model.entity.DadosAgendamentoConsulta;
 import com.ifto.mapeamento.model.entity.Medico;
 import com.ifto.mapeamento.model.entity.Paciente;
 import com.ifto.mapeamento.model.repository.ConsultaRepository;
@@ -30,6 +32,14 @@ public class ConsultaController {
 
     @Autowired
     MedicoRepository medicoRepository;
+
+    @Autowired //serviço de agendamento
+    AgendaDeConsultas agenda;
+
+    public ModelAndView agendar(DadosAgendamentoConsulta dados){
+        agenda.agendar(dados);
+        return new ModelAndView("consulta/list");
+    }
 
     @ResponseBody
     @GetMapping("/list")
