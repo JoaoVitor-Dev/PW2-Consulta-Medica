@@ -9,10 +9,10 @@
             <h1>Cadastro de Consulta</h1>
             <hr>
 
-            <form th:action="@{${consulta.id == null} ? '/consulta/save' : '/consulta/update'}" th:object="${consulta}" method="post">
+            <form xmlns:sec="http://www.w3.org/1999/xhtml" th:action="@{${consulta.id == null} ? '/consulta/save' : '/consulta/update'}" th:object="${consulta}" method="post">
                 <input type="hidden" th:field="*{id}">
 
-                <div class="row">
+                <div class="row" xmlns:sec="http://www.w3.org/1999/xhtml">
                     <div class="col-md-6">
                         <label>Pesquisar Paciente:</label>
                         <input th:field="*{paciente.nome}" class="form-control" type="text" id="input-paciente" placeholder="Pesquise o Paciente" th:errorclass="is-invalid">
@@ -64,7 +64,7 @@
 
                 <a class="btn btn-sm btn-primary elevate" href="/consulta/list">Voltar</a>
 
-                <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
+                <input sec:authorize="hasAnyRole('ADMIN')" class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
 
                 <br>
 
