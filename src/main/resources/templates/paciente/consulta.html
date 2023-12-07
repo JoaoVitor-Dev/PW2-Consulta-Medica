@@ -7,7 +7,7 @@
         <br><br>
         <div class="container">
             <div class="d-flex justify-content-start">
-                <h2>Paciente <span th:text="${paciente.nome}"></span> | </h2>
+                <h2>Consultas do paciente <span th:text="${paciente.nome}"></span> | </h2>
                 <div class="d-flex align-items-center">
                     <span class="badge text-bg-warning" style="margin-left: 5px">Total R$: <span th:text="${#numbers.formatDecimal(paciente.valorTotal(),1, 2, 'COMMA')}"></span> </span>
                 </div>

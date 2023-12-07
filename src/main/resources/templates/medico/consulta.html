@@ -6,7 +6,7 @@
     <div class="container">
         <br><br>
         <div class="container">
-            <h1>Médico(a) <span th:text="${medico.nome}"></span></h1>
+            <h1>Consultas do médico(a) <span th:text="${medico.nome}"></span></h1>
             <hr>
             <table class="table table-sm" border="1">
                 <thead class="table-dark">
@@ -26,6 +26,8 @@
             </table>
             <span class="badge text-bg-success">Total R$: <span th:text="${#numbers.formatDecimal(medico.valorTotal(),1, 2, 'COMMA')}"></span> </span>
         </div>
+        <br>
+        <a class="btn btn-sm btn-primary elevate" onclick="window.history.back()">Voltar</a>
     </div>
 </main>
 </body>
