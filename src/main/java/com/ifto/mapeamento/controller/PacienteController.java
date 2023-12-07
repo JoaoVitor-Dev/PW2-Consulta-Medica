@@ -1,5 +1,4 @@
 package com.ifto.mapeamento.controller;
-
 import com.ifto.mapeamento.model.entity.Paciente;
 import com.ifto.mapeamento.model.repository.PacienteRepository;
 import jakarta.transaction.Transactional;
@@ -11,8 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.management.Attribute;
 
 @Transactional
 @Controller
