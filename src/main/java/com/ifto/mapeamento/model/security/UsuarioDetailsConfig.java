@@ -1,9 +1,4 @@
-package com.ifto.mapeamento;/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+package com.ifto.mapeamento.model.security;
 
 import com.ifto.mapeamento.model.entity.Usuario;
 import com.ifto.mapeamento.model.repository.UsuarioRepository;
@@ -21,7 +16,7 @@ import org.springframework.stereotype.Repository;
  */
 @Transactional
 @Repository
-public class UsuarioDetailsConfig implements UserDetailsService{
+public class UsuarioDetailsConfig implements UserDetailsService {
 
     @Autowired
     UsuarioRepository repository;

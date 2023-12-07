@@ -16,6 +16,9 @@ public class Usuario implements Serializable {
     private long id;
     private String login;
     private String senha;
+    @OneToOne
+    @JoinColumn(name = "pessoaID")
+    private Pessoa pessoa;
     @ManyToMany(cascade = {CascadeType.MERGE})
     private Set<Perfil> perfis;
 
