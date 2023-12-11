@@ -1,6 +1,6 @@
 package com.ifto.mapeamento.controller;
 
-import com.ifto.mapeamento.Service.AgendaDeConsultas;
+import com.ifto.mapeamento.service.AgendaDeConsultas;
 import com.ifto.mapeamento.model.entity.Consulta;
 import com.ifto.mapeamento.model.entity.DadosAgendamentoConsulta;
 import com.ifto.mapeamento.model.entity.Medico;

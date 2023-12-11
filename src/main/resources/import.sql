@@ -32,3 +32,4 @@ INSERT INTO usuario_perfis(perfis_id, usuario_id) values (2, 2)
 
 
 
+

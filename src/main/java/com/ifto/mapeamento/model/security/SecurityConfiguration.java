@@ -30,7 +30,6 @@ public class SecurityConfiguration {
                                         .requestMatchers("/medico/form").hasAnyRole("ADMIN")
                                         .requestMatchers("/medico/*").hasAnyRole("ADMIN")
                                         .requestMatchers("/paciente/consulta").permitAll()
-                                        .requestMatchers("/consulta/form").hasAnyRole("ADMIN")
                                         .requestMatchers(HttpMethod.POST,"/paciente/save").permitAll()
                                         .requestMatchers(HttpMethod.POST,"/consulta/save").hasAnyRole("ADMIN")
                                         .requestMatchers(HttpMethod.POST,"/consulta/update").hasAnyRole("ADMIN")

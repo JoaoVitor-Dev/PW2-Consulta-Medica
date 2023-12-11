@@ -26,12 +26,11 @@
                 <label class="invalid-feedback" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></label>
             </div>
             <br>
-            <input class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
+            <a class="btn btn-sm btn-primary elevate" onclick="window.history.back()">Voltar</a>
+            <input class="btn btn-success btn-sm elevate" type="submit" value="Salvar">
             <br>
             <br>
-
         </form>
-
     </div>
 </main>
 </body>
