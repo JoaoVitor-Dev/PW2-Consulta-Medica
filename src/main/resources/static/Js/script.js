@@ -4,9 +4,13 @@ let modal = document.getElementById("modal")
 let fundo = document.getElementById("fundo")
 let id_paciente = document.getElementById("id-paciente")
 
+let btnPesqPaciente = document.getElementById("pesquisar-paciente")
+
 
 input_paciente.addEventListener("keypress", mostraModal)
 btn_close.addEventListener("click", fecharModal)
+btnPesqPaciente.addEventListener("click", mostraModal)
+
 
 function fecharModal(){
     modal.style.display = "none"

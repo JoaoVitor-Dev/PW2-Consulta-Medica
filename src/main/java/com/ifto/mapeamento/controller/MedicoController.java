@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,7 +24,6 @@ public class MedicoController {
     public String form(Medico medico){
         return "/medico/form";
     }
-
 
     @GetMapping("/list")
     public ModelAndView listarMedico(ModelMap model) {
@@ -72,5 +68,11 @@ public class MedicoController {
 
         repository.update(medico);
         return new ModelAndView("redirect:/medico/list");
+    }
+    @ResponseBody
+    @RequestMapping("pesquisapornome")
+    public ModelAndView pesquisaporNome(ModelMap model, @RequestParam String nome){
+        model.addAttribute("medico", repository.pesquisaPorNome(nome));
+        return new ModelAndView("medico/list", model);
     }
 }

@@ -11,7 +11,7 @@
     <div class="container">
         <h1>Agenda </h1>
         <hr>
-        <form xmlns:sec="http://www.w3.org/1999/xhtml" th:action="@{${agendamento.id == null} ? '/agendamento/save' : '/agendamento/update'}" th:object="${agendamento}" method="post">
+        <form xmlns:sec="http://www.w3.org/1999/xhtml" th:action="@{${agenda.id == null} ? '/agenda/save' : '/agenda/update'}" th:object="${agenda}" method="post">
             <input type="hidden" th:field="*{id}">
 
 

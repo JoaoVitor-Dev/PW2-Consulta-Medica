@@ -35,4 +35,12 @@ public class PacienteRepository {
     public void update(Paciente paciente){
         em.merge(paciente);
     }
+
+    public List<Paciente> pesquisaPorNome(String nome) {
+        String jpql = "SELECT p FROM Paciente p WHERE LOWER(p.nome) LIKE LOWER(:nome)";
+        Query query = em.createQuery(jpql, Paciente.class);
+        query.setParameter("nome", "%" + nome.toLowerCase() + "%");
+
+        return query.getResultList();
+    }
 }

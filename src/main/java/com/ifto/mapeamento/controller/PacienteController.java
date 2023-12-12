@@ -73,4 +73,11 @@ public class PacienteController {
         repository.update(paciente);
         return new ModelAndView("redirect:/paciente/list");
     }
+
+    @ResponseBody
+    @RequestMapping("pesquisapornome")
+    public ModelAndView pesquisaporNome(ModelMap model, @RequestParam String nome){
+        model.addAttribute("paciente", repository.pesquisaPorNome(nome));
+        return new ModelAndView("paciente/list", model);
+    }
 }

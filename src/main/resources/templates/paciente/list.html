@@ -13,9 +13,20 @@
             <div class="d-flex justify-content-between">
 
                 <h2>Pacientes cadastrados</h2>
-                <div class="d-flex align-items-center">
-                    <a class="btn btn-success btn-sm elevate " href="/paciente/form">+ Novo Paciente</a>
+
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <form method="get" action="/paciente/pesquisapornome">
+                            <input class="" name="nome" placeholder="Nome do Paciente">
+                            <button class="btn btn-sm btn-dark" type="submit">Pesquisar</button>
+                        </form>
+                    </div>
+                    <br><br>
+                    <div class="d-flex align-items-center">
+                        <a class="btn btn-success btn-sm elevate " href="/paciente/form">+ Novo Paciente</a>
+                    </div>
                 </div>
+
             </div>
             <hr>
                     <table class="table table-sm " border="1">
@@ -44,6 +55,8 @@
             </div>
         </div>
     </div>
+
+
 </main>
 </body>
 </html>
