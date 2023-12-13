@@ -11,9 +11,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Transactional
@@ -41,6 +39,19 @@ public class AgendamentoController {
     public ModelAndView listar(ModelMap model) {
         model.addAttribute("agendamento", agendamentoRepository.agendamentos());
         return new ModelAndView("agendamento/list", model);
+    }
+
+    @GetMapping("/medicos")
+    public ModelAndView medicos(ModelMap model) {
+        model.addAttribute("medico", medicoRepository.medicos());
+        return new ModelAndView("agendamento/medicos", model);
+    }
+
+    @ResponseBody
+    @RequestMapping("pesquisapornome")
+    public ModelAndView pesquisaporNome(ModelMap model, @RequestParam String nome){
+        model.addAttribute("medico", medicoRepository.pesquisaPorNome(nome));
+        return new ModelAndView("agendamento/medicos", model);
     }
 
 }
