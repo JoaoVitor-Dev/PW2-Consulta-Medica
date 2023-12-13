@@ -1,6 +1,7 @@
 package com.ifto.mapeamento.controller;
 
 
+import com.ifto.mapeamento.model.entity.Agenda;
 import com.ifto.mapeamento.model.entity.Agendamento;
 import com.ifto.mapeamento.model.entity.Consulta;
 import com.ifto.mapeamento.model.entity.Medico;
@@ -11,6 +12,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -52,6 +54,16 @@ public class AgendamentoController {
     public ModelAndView pesquisaporNome(ModelMap model, @RequestParam String nome){
         model.addAttribute("medico", medicoRepository.pesquisaPorNome(nome));
         return new ModelAndView("agendamento/medicos", model);
+    }
+
+    @PostMapping("/save")
+    public ModelAndView save(Agendamento agendamento, BindingResult result, ModelMap map){
+
+        Agenda agenda = agendaRepository.agenda(agendamento.getAgenda().getId());
+        agenda.setDisponivel(false);
+        agendamentoRepository.save(agendamento);
+        agendaRepository.update(agenda);
+        return new ModelAndView("redirect:/agendamento/list");
     }
 
 }

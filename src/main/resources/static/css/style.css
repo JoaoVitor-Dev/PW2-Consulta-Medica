@@ -2,6 +2,10 @@
     --right-msg: 50px
 }
 
+.containerTamanho{
+    max-width: 1700px;
+    padding: 0;
+}
 
 .table tbody tr:hover{
     background-color: #10334e;
