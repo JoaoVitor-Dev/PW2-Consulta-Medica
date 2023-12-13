@@ -21,7 +21,7 @@ public class AgendamentoRepository {
         return em.find(Agendamento.class, id);
     }
 
-    public List agendamentos() {
+    public List<Agendamento> agendamentos() {
         Query query = em.createQuery("from Agendamento");
         return query.getResultList();
     }

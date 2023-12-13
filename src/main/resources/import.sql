@@ -37,6 +37,8 @@ INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 1
 INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 16:00', 1,'true');
 INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 17:00', 1,'true');
 
+INSERT INTO agendamento (data_nascimento, agenda_id, nome, observacoes, telefone) VALUES ('1990-01-01', 1, 'João Silva', 'Consulta de rotina', '(11) 1234-5678');
+
 
 
 

@@ -7,6 +7,7 @@ import com.ifto.mapeamento.model.repository.AgendaRepository;
 import com.ifto.mapeamento.model.repository.AgendamentoRepository;
 import com.ifto.mapeamento.model.repository.MedicoRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +15,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Transactional
 @Controller
 @RequestMapping("agendamento")
 public class AgendamentoController {
+    @Autowired
     private AgendamentoRepository agendamentoRepository;
+    @Autowired
     private AgendaRepository agendaRepository;
+    @Autowired
     private  MedicoRepository medicoRepository;
 
     @GetMapping("/form")
@@ -34,12 +36,9 @@ public class AgendamentoController {
     }
 
     @GetMapping("/list")
-    public String listar(ModelMap model) {
-        List<Agendamento> agendamentos = agendamentoRepository.agendamentos();
-
-        model.addAttribute("agendamento", agendamentos);
-
-        return "agendamento/list";
+    public ModelAndView listar(ModelMap model) {
+        model.addAttribute("agendamento", agendamentoRepository.agendamentos());
+        return new ModelAndView("agendamento/list", model);
     }
 
 }
