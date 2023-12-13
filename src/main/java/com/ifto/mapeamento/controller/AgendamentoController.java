@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Transactional
 @Controller
 @RequestMapping("agendamento")
@@ -29,6 +31,15 @@ public class AgendamentoController {
         model.addAttribute("agenda", agenda);
         model.addAttribute("medico", medico);
         return new ModelAndView("agendamento/form", model);
+    }
+
+    @GetMapping("/list")
+    public String listar(ModelMap model) {
+        List<Agendamento> agendamentos = agendamentoRepository.agendamentos();
+
+        model.addAttribute("agendamento", agendamentos);
+
+        return "agendamento/list";
     }
 
 }
