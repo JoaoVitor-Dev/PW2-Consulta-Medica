@@ -32,28 +32,27 @@
 
             <div class="row">
 
-                <div class="col-12">
+                <div class="col-md-6">
                     <label>Telefone:</label>
                     <input class="form-control" type="text" th:field="*{telefone}"  placeholder="Fone" th:errorclass="is-invalid">
                     <div class="invalid-feedback" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></div>
                 </div>
 
                 <div class="col-md-6">
-                    <label>Médico: </label>
-                    <select id="medico" name="medico" th:field="*{medico.id}" class="form-select">
-                        <option value="">Selecione...</option>
-                        <option th:each="m : ${medico}"
-                                th:value="${m.id}"
-                                th:text="${m.nome}">
-                        </option>
+                    <label class="form-label" for="idData">Data consulta</label>
+                    <select class="form-select" id="idData" name="idAgenda" required th:errorclass="is-invalid"
+                            th:field="*{agenda.id}">
+                        <option value="">Selecione uma data</option>
+                        <th:block th:each="dataList : ${agenda}">
+                            <option th:text="${dataList.horarioInicio}" th:value="${dataList.id}"></option>
+                        </th:block>
                     </select>
                 </div>
-
             </div>
 
             <br>
             <a class="btn btn-sm btn-primary elevate" onclick="window.history.back()">Voltar</a>
-            <input sec:authorize="hasAnyRole('ADMIN')" class="btn btn-success btn-sm elevate" type="submit" value="Salvar">
+            <input sec:authorize="hasAnyRole('ADMIN')" class="btn btn-success btn-sm elevate" type="submit" value="Agendar consulta">
             <br>
         </form>
     </div>

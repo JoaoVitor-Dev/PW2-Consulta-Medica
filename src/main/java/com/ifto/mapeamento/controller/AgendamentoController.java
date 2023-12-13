@@ -27,12 +27,14 @@ public class AgendamentoController {
     @Autowired
     private MedicoRepository medicoRepository;
 
-    @GetMapping("/form")
-    public ModelAndView formAgendamento(ModelMap model){
-        model.addAttribute("medico", medicoRepository.medicos());
-        model.addAttribute("agendamento", new Agendamento());
+    @GetMapping("/{idMedico}")
+    public String formAgendamento(@PathVariable(value = "idMedico", required = false) Long idMedico, ModelMap model, Medico medico, Agendamento agendamento){
+        medico = medicoRepository.medico(idMedico);
+        var agenda = agendaRepository.agendasPorMedico(idMedico);
+        model.addAttribute("agenda", agenda);
+        model.addAttribute("medico", medico);
 
-        return new ModelAndView("agendamento/form", model);
+        return "agendamento/form";
     }
 
     @GetMapping("/list")
