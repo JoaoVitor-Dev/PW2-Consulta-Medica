@@ -33,7 +33,6 @@
                 <td class="col-1"th:text="${#temporals.format(c.getAgenda().getHorarioInicio(), 'HH:mm')}"></td>
                 <td th:text="${c.getNome()}"></td>
                 <td th:text="${c.getAgenda().getMedico().getNome()}"></td>
-
                 <td class="col-2">
                     <a class="btn btn-danger btn-sm" onclick="return window.confirm('Tem certeza que deseja excluir este registro?')" th:href="@{/agendamento/remove/{id}(id=${c.getId()})}"><img alt="excluir" data-bs-placement="top" data-bs-toggle="tooltip" src="/images/delete_FILL0_wght200_GRAD0_opsz24.svg"></a></td>
             </table>

@@ -2,6 +2,7 @@ package com.ifto.mapeamento.controller;
 
 
 import com.ifto.mapeamento.model.entity.Agendamento;
+import com.ifto.mapeamento.model.entity.Consulta;
 import com.ifto.mapeamento.model.entity.Medico;
 import com.ifto.mapeamento.model.repository.AgendaRepository;
 import com.ifto.mapeamento.model.repository.AgendamentoRepository;
@@ -24,14 +25,13 @@ public class AgendamentoController {
     @Autowired
     private AgendaRepository agendaRepository;
     @Autowired
-    private  MedicoRepository medicoRepository;
+    private MedicoRepository medicoRepository;
 
     @GetMapping("/form")
-    public ModelAndView formAgendamento(@PathVariable(value = "idMedico", required = false) Long idMedico, ModelMap model, Medico medico, Agendamento agendamento){
-        medico = medicoRepository.medico(idMedico);
-        var agenda = agendaRepository.agendasPorMedico(idMedico);
-        model.addAttribute("agenda", agenda);
-        model.addAttribute("medico", medico);
+    public ModelAndView formAgendamento(ModelMap model){
+        model.addAttribute("medico", medicoRepository.medicos());
+        model.addAttribute("agendamento", new Agendamento());
+
         return new ModelAndView("agendamento/form", model);
     }
 

@@ -18,6 +18,7 @@ import java.util.List;
 
 @Transactional
 @Controller
+
 @RequestMapping("consulta")
 public class ConsultaController {
     @Autowired
