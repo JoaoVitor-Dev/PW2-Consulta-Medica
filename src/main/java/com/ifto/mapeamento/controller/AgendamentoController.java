@@ -66,4 +66,10 @@ public class AgendamentoController {
         return new ModelAndView("redirect:/agendamento/list");
     }
 
+    @GetMapping("/detalhe/{id}")
+    public ModelAndView detalhes(@PathVariable("id") Long id, ModelMap model) {
+        model.addAttribute("agendamento", agendamentoRepository.agendamento(id));
+        return new ModelAndView("agendamento/detalhe", model);
+    }
+
 }

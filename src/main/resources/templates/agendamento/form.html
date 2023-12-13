@@ -50,6 +50,12 @@
                 </div>
             </div>
 
+            <div class="col-12">
+                <label>Observações:</label>
+                <input class="form-control" type="text" th:field="*{observacoes}"  placeholder="Observações" th:errorclass="is-invalid">
+
+            </div>
+
             <br>
             <a class="btn btn-sm btn-primary elevate" onclick="window.history.back()">Voltar</a>
             <input sec:authorize="hasAnyRole('ADMIN')" class="btn btn-success btn-sm elevate" type="submit" value="Agendar consulta">
