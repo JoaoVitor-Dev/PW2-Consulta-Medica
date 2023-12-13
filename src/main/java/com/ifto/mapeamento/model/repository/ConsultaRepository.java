@@ -1,11 +1,18 @@
 package com.ifto.mapeamento.model.repository;
 
 import com.ifto.mapeamento.model.entity.Consulta;
+import com.ifto.mapeamento.model.entity.Medico;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -45,6 +52,18 @@ public class ConsultaRepository {
 
     public void update(Consulta consulta){
         em.merge(consulta);
+    }
+
+    public List<Medico> pesquisaPorData(String data) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+        LocalDateTime dataFormatada = LocalDateTime.parse(data, formatter);
+
+        String jpql = "FROM Consulta WHERE data = :data";
+        Query query = em.createQuery(jpql, Consulta.class);
+        query.setParameter("data", dataFormatada);
+
+        return query.getResultList();
     }
 
 }

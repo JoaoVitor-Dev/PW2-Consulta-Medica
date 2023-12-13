@@ -1,5 +1,4 @@
 package com.ifto.mapeamento.controller;
-
 import com.ifto.mapeamento.model.entity.Consulta;
 import com.ifto.mapeamento.model.entity.Medico;
 import com.ifto.mapeamento.model.entity.Paciente;
@@ -15,7 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
 
 @Transactional
@@ -86,5 +84,12 @@ public class ConsultaController {
     public ModelAndView updateConsulta(Consulta consulta) {
         repository.update(consulta);
         return new ModelAndView("redirect:/consulta/list");
+    }
+
+    @ResponseBody
+    @RequestMapping("pesquisapordata")
+    public ModelAndView pesquisaporNome(ModelMap model, @RequestParam String data){
+        model.addAttribute("consulta", repository.pesquisaPorData(data));
+        return new ModelAndView("consulta/list", model);
     }
 }
