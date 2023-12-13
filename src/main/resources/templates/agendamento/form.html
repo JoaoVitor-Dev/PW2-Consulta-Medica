@@ -24,10 +24,11 @@
 
                 <div class="col-md-6">
                     <label>Data de Nascimento: </label>
-                    <input class="form-control" type="datetime-local" th:field="*{dataNascimento}" placeholder="data" th:errorclass="is-invalid">
+                    <input class="form-control" type="date" th:field="*{dataNascimento}" placeholder="data" th:errorclass="is-invalid">
                     <div class="invalid-feedback" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></div>
                 </div>
             </div>
+
             <br>
 
             <div class="row">
@@ -50,10 +51,9 @@
                 </div>
             </div>
 
-            <div class="col-12">
-                <label>Observações:</label>
-                <input class="form-control" type="text" th:field="*{observacoes}"  placeholder="Observações" th:errorclass="is-invalid">
-
+            <div class="form-floating">
+                <textarea class="form-control" th:field="*{observacoes}"  placeholder="Observações" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Observações</label>
             </div>
 
             <br>

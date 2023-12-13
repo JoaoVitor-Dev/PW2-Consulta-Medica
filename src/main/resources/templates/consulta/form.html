@@ -55,11 +55,11 @@
                     <br>
                 </div>
                 <br>
-                <div class="col-12">
-                    <label>Observação:</label>
-                    <input class="form-control" type="text" th:field="*{observacao}"  placeholder="Observacao" th:errorclass="is-invalid">
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('observacao')}" th:errors="*{observacao}"></div>
+                <div class="form-floating">
+                    <textarea class="form-control" th:field="*{observacao}" placeholder="Observação" th:errorclass="is-invalid" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Observação</label>
                 </div>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('observacao')}" th:errors="*{observacao}"></div>
                 <br>
 
                 <a class="btn btn-sm btn-primary elevate" href="/consulta/list">Voltar</a>

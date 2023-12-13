@@ -16,15 +16,19 @@
                     <label>Telefone:
                         <input class="form-control" type="text" th:field="${agendamento.telefone}" disabled>
                     </label>
-                    <br>
-                    <hr>
+                    <label>Nascimento:
+                        <input class="form-control" type="text" th:field="${agendamento.dataNascimento}" disabled>
+                    </label>
                     <label>Médico:
                         <input class="form-control" type="text" th:field="${agendamento.agenda.medico.nome}" disabled>
                     </label>
+                    <br>
+                    <hr>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" th:field="${agendamento.observacoes}" placeholder="" id="floatingTextarea2Disabled" style="height: 100px" disabled>Disabled textarea with some text inside</textarea>
+                        <label for="floatingTextarea2Disabled">Observações</label>
+                    </div>
 
-                    <label>Observações:
-                        <input class="form-control" type="text" th:field="${agendamento.observacoes}" disabled>
-                    </label>
                 </div>
             </div>
             <br>

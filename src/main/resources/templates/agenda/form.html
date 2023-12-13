@@ -15,6 +15,21 @@
             <input type="hidden" th:field="*{id}">
             <input type="date" th:field="*{horarioInicio}">
 
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Horário de Inicio: </label>
+                    <input class="form-control" type="date" th:field="*{horarioInicio}" placeholder="Nome" th:errorclass="is-invalid">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}" th:errors="*{horarioInicio}"></div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <label>Data de Nascimento: </label>
+                    <input class="form-control" type="datetime-local" th:field="*{dataNascimento}" placeholder="data" th:errorclass="is-invalid">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></div>
+                </div>
+            </div>
+
         </form>
     </div>
 
