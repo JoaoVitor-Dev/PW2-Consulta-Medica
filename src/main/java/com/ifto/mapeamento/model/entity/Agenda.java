@@ -1,11 +1,7 @@
 package com.ifto.mapeamento.model.entity;
-
-
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDateTime;
-
 @Entity
 public class Agenda {
     @Id

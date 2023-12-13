@@ -28,7 +28,14 @@ INSERT INTO usuario(id, login, senha) values (2, 'user', '$2a$10$MzBPcGHwyBgjNp2
 INSERT INTO usuario_perfis(perfis_id, usuario_id) values (1, 1)
 INSERT INTO usuario_perfis(perfis_id, usuario_id) values (2, 2)
 
-
+INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 08:00', 1,'false');
+INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 09:00', 1,'true');
+INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 10:00', 1,'true');
+INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 11:00', 1,'true');
+INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 14:00', 1,'true');
+INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 15:00', 1,'true');
+INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 16:00', 1,'true');
+INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 17:00', 1,'true');
 
 
 
