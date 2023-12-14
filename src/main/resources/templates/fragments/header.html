@@ -7,7 +7,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav" style="color: aliceblue">
-                    <li class="nav-item">
+                    <li class="nav-item" sec:authorize="hasAnyRole('ADMIN', 'MEDICO')">
                         <a class="nav-link link-light"  href="/consulta/list">Consultas</a>
                     </li>
                     <li class="nav-item">
@@ -16,7 +16,7 @@
                         <li class="nav-item" sec:authorize="hasAnyRole('ADMIN')">
                             <a class="nav-link link-light" href="/medico/list">Médicos</a>
                         </li>
-                    <li class="nav-item" sec:authorize="hasAnyRole('ADMIN')">
+                    <li class="nav-item">
                         <a class="nav-link link-light" href="/agendamento/list">Agendamento</a>
                     </li>
                 </ul>

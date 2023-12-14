@@ -23,14 +23,13 @@
 
 
                 <div class="col-md-6">
-                    <label>Data de Nascimento: </label>
+                    <label>Data de Nascimento:
                     <input class="form-control" type="date" th:field="*{dataNascimento}" placeholder="data" th:errorclass="is-invalid">
                     <div class="invalid-feedback" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></div>
+                    </label>
                 </div>
             </div>
-
             <br>
-
             <div class="row">
 
                 <div class="col-md-6">
@@ -40,7 +39,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label" for="idData">Data consulta</label>
+                    <label class="form-label" for="idData">Data consulta:
                     <select class="form-select" id="idData" name="idAgenda" required th:errorclass="is-invalid"
                             th:field="*{agenda.id}">
                         <option value="">Selecione uma data</option>
@@ -48,8 +47,12 @@
                             <option th:text="${dataList.horarioInicio}" th:value="${dataList.id}"></option>
                         </th:block>
                     </select>
+                    </label>
                 </div>
+
+
             </div>
+            <br>
 
             <div class="form-floating">
                 <textarea class="form-control" th:field="*{observacoes}"  placeholder="Observações" id="floatingTextarea2" style="height: 100px"></textarea>

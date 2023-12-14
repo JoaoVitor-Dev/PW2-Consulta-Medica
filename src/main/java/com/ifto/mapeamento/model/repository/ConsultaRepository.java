@@ -66,4 +66,19 @@ public class ConsultaRepository {
         return query.getResultList();
     }
 
+    public List<Consulta> consultasDoMedico(Medico medico) {
+        Query query = em.createQuery("from Consulta WHERE medico = :medico ");
+        query.setParameter("medico", medico);
+        return query.getResultList();
+    }
+
+    public Double valorTotalMedico(Medico medico) {
+        Query query = em.createQuery("select sum(valor) from Consulta WHERE medico = :medico ");
+        query.setParameter("medico", medico);
+
+        List total;
+        total = query.getResultList();
+        return (Double) total.get(0);
+    }
+
 }

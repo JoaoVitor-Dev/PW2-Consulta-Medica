@@ -2,9 +2,11 @@ package com.ifto.mapeamento.controller;
 import com.ifto.mapeamento.model.entity.Consulta;
 import com.ifto.mapeamento.model.entity.Medico;
 import com.ifto.mapeamento.model.entity.Paciente;
+import com.ifto.mapeamento.model.entity.Usuario;
 import com.ifto.mapeamento.model.repository.ConsultaRepository;
 import com.ifto.mapeamento.model.repository.MedicoRepository;
 import com.ifto.mapeamento.model.repository.PacienteRepository;
+import com.ifto.mapeamento.model.repository.UsuarioRepository;
 import com.ifto.mapeamento.model.validation.groups.Insert;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
+import org.springframework.security.core.Authentication;
 
 @Transactional
 @Controller
@@ -29,12 +32,33 @@ public class ConsultaController {
 
     @Autowired
     MedicoRepository medicoRepository;
+
+    @Autowired
+    UsuarioRepository usuarioRepository;
     
     @ResponseBody
     @GetMapping("/list")
-    public ModelAndView listarConsultas(ModelMap model) {
-        model.addAttribute("consulta", repository.consultas());
-        model.addAttribute("vTotal", repository.vTotal());
+    public ModelAndView listarConsultas(ModelMap model, Authentication authentication) {
+
+        String nomeUsuarioLogado = authentication.getName();
+
+        Usuario usuario = usuarioRepository.usuario(nomeUsuarioLogado);
+
+        Long idPessoa = usuario.getId();
+
+        Medico medico = medicoRepository.medico(idPessoa);
+
+        boolean isMedico = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ROLE_MEDICO"));
+
+        if(isMedico){
+            model.addAttribute("consulta", repository.consultasDoMedico(medico));
+            model.addAttribute("vTotal", repository.valorTotalMedico(medico));
+        }else {
+            model.addAttribute("consulta", repository.consultas());
+            model.addAttribute("vTotal", repository.vTotal());
+        }
+
         return new ModelAndView("consulta/list", model);
     }
 

@@ -64,7 +64,7 @@
 
                 <a class="btn btn-sm btn-primary elevate" href="/consulta/list">Voltar</a>
 
-                <input sec:authorize="hasAnyRole('ADMIN')" class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
+                <input sec:authorize="hasAnyRole('ADMIN', 'MEDICO')" class="btn btn-success btn-sm elevate" type="submit" value="Enviar">
 
                 <br>
 

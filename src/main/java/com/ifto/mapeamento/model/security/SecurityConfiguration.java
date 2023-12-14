@@ -26,14 +26,29 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(
                         customizer ->
                                 customizer
+
+                                        //todos podem cadastrar, editar um paciente
                                         .requestMatchers("/paciente/form").permitAll()
+                                        .requestMatchers(HttpMethod.GET, "paciente/form").permitAll()
+                                        .requestMatchers(HttpMethod.POST, "paciente/save").permitAll()
+                                        .requestMatchers(HttpMethod.POST, "paciente/update").permitAll()
+                                        //Apenas ADMINS podem deletar um paciente
+                                        .requestMatchers(HttpMethod.POST,"/removePaciente/").hasAnyRole("ADMIN")
+
+                                        //Apenas médicos e ADMINS podem realizar ações em consultas
+                                        .requestMatchers("/consulta/list").hasAnyRole("MEDICO", "ADMIN")
+                                        .requestMatchers("/consulta/save").hasAnyRole("MEDICO", "ADMIN")
+                                        .requestMatchers("/consulta/update").hasAnyRole("MEDICO", "ADMIN")
+
+
+                                        //Apenas ADMINS podem remover consultas
+                                        .requestMatchers("/removeConsulta/{id}").hasAnyRole( "ADMIN")
+
+                                        //Apenas ADMINS podem salvar, e deletar médicos
                                         .requestMatchers("/medico/form").hasAnyRole("ADMIN")
                                         .requestMatchers("/medico/*").hasAnyRole("ADMIN")
-                                        .requestMatchers("/paciente/consulta").permitAll()
-                                        .requestMatchers(HttpMethod.POST,"/paciente/save").permitAll()
-                                        .requestMatchers(HttpMethod.POST,"/consulta/save").hasAnyRole("ADMIN")
-                                        .requestMatchers(HttpMethod.POST,"/consulta/update").hasAnyRole("ADMIN")
-                                        .requestMatchers("/consulta/remove/{id}").hasAnyRole("ADMIN")
+
+
                                         .anyRequest() //define que a configuração é válida para qualquer requisição.
                                         .authenticated() //define que o usuário precisa estar autenticado.
 

@@ -15,18 +15,21 @@ INSERT INTO paciente(id, cpf,  nome, telefone) VALUES(13, '06351644306', 'Samuel
 INSERT INTO paciente(id, cpf,  nome, telefone) VALUES(14, '06351644306', 'Daniel', '984720554')
 INSERT INTO paciente(id, cpf,  nome, telefone) VALUES(15, '06351644306', 'Anderson', '984720554')
 
-INSERT INTO consulta(id, data, valor, id_medico, id_paciente, observacao) values (1, '20230921', 100.0, 1, 3, 'teste')
-INSERT INTO consulta(id, data, valor, id_medico, id_paciente, observacao) values (2, '20230921', 70.0, 1, 4, 'teste')
-INSERT INTO consulta(id, data, valor, id_medico, id_paciente, observacao) values (3, '20230921', 60.0, 1, 5, 'teste')
+INSERT INTO consulta(id, data, valor, id_medico, id_paciente, observacao) values (1, '20230921', 100.0, 2, 3, 'teste')
+INSERT INTO consulta(id, data, valor, id_medico, id_paciente, observacao) values (2, '20230921', 70.0, 2, 4, 'teste')
+INSERT INTO consulta(id, data, valor, id_medico, id_paciente, observacao) values (3, '20230921', 60.0, 2, 5, 'teste')
 
 INSERT INTO perfil(id, nome) values (1, 'ROLE_ADMIN')
-INSERT INTO perfil(id, nome) values (2, 'ROLE_USER')
+INSERT INTO perfil(id, nome) values (2, 'ROLE_ATENDENTE')
+INSERT INTO perfil(id, nome) values (3, 'ROLE_MEDICO')
 
-INSERT INTO usuario(id, login, senha) values (1, 'admin', '$2a$10$MzBPcGHwyBgjNp2BjyAtbespp4q5Z9Ns/XKUjaYtdSjEhn8Q21B4i')
-INSERT INTO usuario(id, login, senha) values (2, 'user', '$2a$10$MzBPcGHwyBgjNp2BjyAtbespp4q5Z9Ns/XKUjaYtdSjEhn8Q21B4i')
+INSERT INTO usuario(id, pessoaID, login, senha) values (1, 1, 'admin', '$2a$10$MzBPcGHwyBgjNp2BjyAtbespp4q5Z9Ns/XKUjaYtdSjEhn8Q21B4i') --admin do sistema
+INSERT INTO usuario(id, pessoaID, login, senha) values (2, 3, 'joao', '$2a$10$MzBPcGHwyBgjNp2BjyAtbespp4q5Z9Ns/XKUjaYtdSjEhn8Q21B4i') -- atendente
+INSERT INTO usuario(id, pessoaID, login, senha) values (3, 2, 'dr.paulo', '$2a$10$MzBPcGHwyBgjNp2BjyAtbespp4q5Z9Ns/XKUjaYtdSjEhn8Q21B4i') --médico
 
 INSERT INTO usuario_perfis(perfis_id, usuario_id) values (1, 1)
 INSERT INTO usuario_perfis(perfis_id, usuario_id) values (2, 2)
+INSERT INTO usuario_perfis(perfis_id, usuario_id) values (3, 3)
 
 INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 08:00', 1,'false');
 INSERT INTO agenda (horario_inicio, pessoa_Id, disponivel) VALUES ('2023-04-17 09:00', 1,'true');

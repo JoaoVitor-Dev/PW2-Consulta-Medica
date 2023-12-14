@@ -13,7 +13,7 @@ public class Usuario implements Serializable {
     @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    long id;
     private String login;
     private String senha;
     @OneToOne
