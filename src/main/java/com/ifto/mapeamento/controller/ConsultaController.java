@@ -52,7 +52,8 @@ public class ConsultaController {
                 .anyMatch(role -> role.getAuthority().equals("ROLE_MEDICO"));
 
         if(isMedico){
-            model.addAttribute("consulta", repository.consultasDoMedico(medico));
+            List<Consulta> consultasDoMedico = repository.consultasDoMedico(medico);
+            model.addAttribute("consulta", consultasDoMedico);
             model.addAttribute("vTotal", repository.valorTotalMedico(medico));
         }else {
             model.addAttribute("consulta", repository.consultas());

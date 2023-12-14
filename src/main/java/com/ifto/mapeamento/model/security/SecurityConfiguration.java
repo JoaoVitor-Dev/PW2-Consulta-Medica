@@ -36,6 +36,7 @@ public class SecurityConfiguration {
                                         .requestMatchers(HttpMethod.POST,"/removePaciente/").hasAnyRole("ADMIN")
 
                                         //Apenas médicos e ADMINS podem realizar ações em consultas
+                                        .requestMatchers("/consulta/*").hasAnyRole("MEDICO", "ADMIN")
                                         .requestMatchers("/consulta/list").hasAnyRole("MEDICO", "ADMIN")
                                         .requestMatchers("/consulta/save").hasAnyRole("MEDICO", "ADMIN")
                                         .requestMatchers("/consulta/update").hasAnyRole("MEDICO", "ADMIN")
